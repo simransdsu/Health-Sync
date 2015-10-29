@@ -34,6 +34,9 @@ class ViewController: UIViewController {
         
         //let midnightOfToday = cal.dateFromComponents(comps)!
         
+    }
+    @IBAction func startStepTrackingAction(sender: AnyObject) {
+        
         if(CMMotionActivityManager.isActivityAvailable()) {
             self.pedoMeter.startPedometerUpdatesFromDate(NSDate()) {
                 (data, error) in
@@ -45,10 +48,14 @@ class ViewController: UIViewController {
                         //self.distanceLabel.text = "\(self.lengthFormatter.stringFromMeters(data.distance as! Double))"
                     }
                 }
-            }        }
-        
-        
-        
+            }
+        }
+    }
+
+    @IBAction func stopStepTrackingActivity(sender: AnyObject) {
+        if(CMMotionActivityManager.isActivityAvailable()) {
+            self.pedoMeter.stopPedometerUpdates()
+        }
     }
 
     override func didReceiveMemoryWarning() {
