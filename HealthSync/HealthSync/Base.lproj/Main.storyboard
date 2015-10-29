@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GDt-Kx-8je">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
@@ -16,16 +16,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Steps for today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jR7-MJ-mW8">
-                                <rect key="frame" x="134" y="28" width="333" height="75"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps for today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jR7-MJ-mW8">
+                                <rect key="frame" x="134" y="68" width="333" height="75"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="333" id="LEL-by-aI5"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="44"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9N2-eH-05z">
-                                <rect key="frame" x="175" y="111" width="250" height="69"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9N2-eH-05z">
+                                <rect key="frame" x="175" y="151" width="250" height="69"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="92V-bE-3M0"/>
+                                    <constraint firstAttribute="height" constant="69" id="nva-qE-AkO"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -33,12 +40,39 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jR7-MJ-mW8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="4" id="CKU-eB-blM"/>
+                            <constraint firstItem="9N2-eH-05z" firstAttribute="centerX" secondItem="jR7-MJ-mW8" secondAttribute="centerX" id="Nhx-Rv-zcD"/>
+                            <constraint firstItem="9N2-eH-05z" firstAttribute="top" secondItem="jR7-MJ-mW8" secondAttribute="bottom" constant="8" symbolic="YES" id="Pnt-Vy-ZJt"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9N2-eH-05z" secondAttribute="bottom" constant="380" id="Yx8-oL-t8N"/>
+                            <constraint firstItem="9N2-eH-05z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wZd-pl-z0W"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="UxM-kE-U8Z"/>
                     <connections>
                         <outlet property="numberOfStepsLabel" destination="9N2-eH-05z" id="faN-MY-Pvu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1377" y="461"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kgH-vX-psR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GDt-Kx-8je" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MaP-cr-g1K">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="iRK-9F-f2O"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aQ1-We-ro3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="565" y="461"/>
         </scene>
