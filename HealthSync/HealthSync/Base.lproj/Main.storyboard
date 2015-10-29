@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GDt-Kx-8je">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HealthSync" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +18,103 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps for today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jR7-MJ-mW8">
+                                <rect key="frame" x="134" y="68" width="333" height="75"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="333" id="pUH-x2-hJp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="44"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9N2-eH-05z">
+                                <rect key="frame" x="175" y="151" width="250" height="69"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="Vjo-qG-YAu"/>
+                                    <constraint firstAttribute="height" constant="69" id="s5q-j4-3sw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybh-HY-hgn">
+                                <rect key="frame" x="25" y="285" width="137" height="51"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="HPW-OP-Qoz"/>
+                                    <constraint firstAttribute="width" constant="137" id="Xll-zx-yh0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" red="0.94625962367929106" green="0.97409861822643218" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startStepTrackingAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xZt-37-evU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AlI-Xw-rSA">
+                                <rect key="frame" x="443" y="285" width="137" height="51"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.24368123314386092" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="137" id="SlG-Z3-4xQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleColor" red="0.94625962367929106" green="0.97409861822643218" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopStepTrackingActivity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vis-nb-Tx0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ybh-HY-hgn" firstAttribute="baseline" secondItem="AlI-Xw-rSA" secondAttribute="firstBaseline" id="5Qc-7x-MMC"/>
+                            <constraint firstItem="AlI-Xw-rSA" firstAttribute="baseline" secondItem="Ybh-HY-hgn" secondAttribute="firstBaseline" id="5hQ-MZ-dV1"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ybh-HY-hgn" secondAttribute="bottom" constant="264" id="7Tu-Vg-8te"/>
+                            <constraint firstItem="jR7-MJ-mW8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EXa-cK-cSk"/>
+                            <constraint firstItem="Ybh-HY-hgn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="F68-Rd-c6V"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9N2-eH-05z" secondAttribute="bottom" constant="380" id="XLI-If-m2v"/>
+                            <constraint firstItem="9N2-eH-05z" firstAttribute="top" secondItem="jR7-MJ-mW8" secondAttribute="bottom" constant="8" symbolic="YES" id="bZu-ve-qXD"/>
+                            <constraint firstItem="AlI-Xw-rSA" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="heh-z3-Zoj"/>
+                            <constraint firstItem="jR7-MJ-mW8" firstAttribute="centerX" secondItem="9N2-eH-05z" secondAttribute="centerX" id="oQt-Os-2ps"/>
+                            <constraint firstItem="AlI-Xw-rSA" firstAttribute="top" secondItem="Ybh-HY-hgn" secondAttribute="top" id="rVf-F6-GdA"/>
+                            <constraint firstItem="jR7-MJ-mW8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="4" id="yNw-Cb-IIS"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="UxM-kE-U8Z"/>
+                    <connections>
+                        <outlet property="numberOfStepsLabel" destination="9N2-eH-05z" id="faN-MY-Pvu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1261" y="466"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kgH-vX-psR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GDt-Kx-8je" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MaP-cr-g1K">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="iRK-9F-f2O"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aQ1-We-ro3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="565" y="461"/>
         </scene>
     </scenes>
 </document>
