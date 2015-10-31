@@ -11,8 +11,10 @@ import CoreMotion
 
 class ViewController: UIViewController {
 
+    let themeColor = UIColor(red: 96/256, green: 191/256, blue: 186/256, alpha: 1)
     
     @IBOutlet weak var numberOfStepsLabel: UILabel!
+    @IBOutlet weak var startButton: UIButton!
     
     var days:[String] = []
     var stepsTakes:[Int] = []
@@ -22,7 +24,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.barTintColor = UIColor(red: 96/256, green: 191/256, blue: 186/256, alpha: 1)
+        //UIColorSetup
+        navigationController?.navigationBar.barTintColor = themeColor
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        startButton.backgroundColor = themeColor
+        
         
         let cal = NSCalendar.currentCalendar()
         let comps = cal.components(NSCalendarUnit.Year , fromDate: NSDate())
@@ -36,25 +42,29 @@ class ViewController: UIViewController {
         
     }
     @IBAction func startStepTrackingAction(sender: AnyObject) {
-        
         if(CMMotionActivityManager.isActivityAvailable()) {
-            self.pedoMeter.startPedometerUpdatesFromDate(NSDate()) {
-                (data, error) in
-                if error != nil {
-                    print("There was an error obtaining pedometer data: \(error)")
-                } else {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.numberOfStepsLabel.text = "\(data!.numberOfSteps)"
-                        //self.distanceLabel.text = "\(self.lengthFormatter.stringFromMeters(data.distance as! Double))"
+            if(startButton.titleLabel?.text == "Start") {
+                startButton.setTitle("Stop", forState: UIControlState.Normal)
+                startButton.backgroundColor = UIColor.redColor()
+                
+                self.pedoMeter.startPedometerUpdatesFromDate(NSDate()) {
+                    (data, error) in
+                    if error != nil {
+                        print("There was an error obtaining pedometer data: \(error)")
+                    } else {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.numberOfStepsLabel.text = "\(data!.numberOfSteps)"
+                            //self.distanceLabel.text = "\(self.lengthFormatter.stringFromMeters(data.distance as! Double))"
+                        }
                     }
                 }
             }
-        }
-    }
-
-    @IBAction func stopStepTrackingActivity(sender: AnyObject) {
-        if(CMMotionActivityManager.isActivityAvailable()) {
-            self.pedoMeter.stopPedometerUpdates()
+            else {
+                startButton.setTitle("Start", forState: UIControlState.Normal)
+                startButton.backgroundColor = themeColor
+                
+                self.pedoMeter.stopPedometerUpdates()
+            }
         }
     }
 
