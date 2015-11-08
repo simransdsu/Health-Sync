@@ -17,20 +17,31 @@ class ViewController: UIViewController {
     @IBOutlet weak var numberOfStepsLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     
-    var totalSteps = 0;
+    var totalSteps = 0
     
     let activityManager = CMMotionActivityManager()
     let pedoMeter = CMPedometer()
     
     override func viewWillAppear(animated: Bool) {
-        healthManager?.recentSteps({steps, error in
-            self.numberOfStepsLabel.text = "Loading previous steps"
-            self.totalSteps = Int((steps[HealthManager.TOTAL_STEPS_COUNT_AS_DOUBE] as? Int)!)
-            dispatch_async(dispatch_get_main_queue()) {
-                self.numberOfStepsLabel.text = "\(self.totalSteps)"
+        healthManager?.authorizeHealthKit { (authorized,  error) -> Void in
+            if authorized {
+                self.healthManager?.recentSteps({steps, error in
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.numberOfStepsLabel.text = "Loading previous steps"
+                        self.totalSteps = Int((steps[HealthManager.TOTAL_STEPS_COUNT_AS_DOUBE] as? Int)!)
+                        print(steps[HealthManager.STEP_RECORD_ARRAY])
+                        self.numberOfStepsLabel.text = "\(self.totalSteps)"
+                    }
+                })
             }
-        })
-    }
+            else
+            {
+                print("HealthKit authorization denied!")
+                if error != nil {
+                    print("\(error)")
+                }
+            }
+        }    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +88,6 @@ class ViewController: UIViewController {
                 let destinationVC = self.storyboard!.instantiateViewControllerWithIdentifier("SyncViewController") as! SyncViewController
                 destinationVC.totalSteps = Int(self.numberOfStepsLabel.text!)!;
                 self.navigationController?.pushViewController(destinationVC, animated: true)
-
             }
         }
     }

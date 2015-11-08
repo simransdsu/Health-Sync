@@ -14,16 +14,20 @@ class SyncViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Steps: \(totalSteps)");
-        healthManager.recentSteps({steps, error in
-            print(steps)
+        // For testing purpose uncomment the code below
+/*
+        print("Steps before test addition: \(totalSteps)")
+        totalSteps += 50;
+        print("Steps after dummy addition: \(totalSteps)")
+*/
+        // The code below this should not be commented at any costs.
+        healthManager.recentSteps({stepMap, error in
+            print("Recent Steps: \(stepMap[HealthManager.TOTAL_STEPS_COUNT_AS_DOUBE])")
         })
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func syncWithHealthKit(sender: AnyObject) {
@@ -31,16 +35,21 @@ class SyncViewController: UIViewController {
             dispatch_async(dispatch_get_main_queue()) {
                 let healthKitSteps = (stepMap[HealthManager.TOTAL_STEPS_COUNT_AS_DOUBE] as? Int)!
                 if(self.totalSteps == healthKitSteps) {
-                    print("Data Already Synced");
+                        print("Data Already Synced");
                 } else {
-                    let stepsDifference = self.totalSteps - healthKitSteps;
-                    self.healthManager.saveSteps(stepsDifference)
-                    print("Steps Difference is: \(stepsDifference)")
+                    self.synStepsWithHealthKit(healthKitSteps)
                 }
             }
         })
     }
 
+    func synStepsWithHealthKit(healthKitSteps: Int) {
+        let stepsDifference = self.totalSteps - healthKitSteps;
+        if(stepsDifference > 0) {
+            self.healthManager.saveSteps(stepsDifference)
+        }
+        print("Steps Difference is: \(stepsDifference)")
+    }
 
     /*
     // MARK: - Navigation
