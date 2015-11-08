@@ -12,15 +12,36 @@ import CoreMotion
 class ViewController: UIViewController {
 
     let themeColor = UIColor(red: 96/256, green: 191/256, blue: 186/256, alpha: 1)
-    
+    var healthManager: HealthManager? =  HealthManager()
+
     @IBOutlet weak var numberOfStepsLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     
-    var days:[String] = []
-    var stepsTakes:[Int] = []
+    var totalSteps = 0
     
     let activityManager = CMMotionActivityManager()
     let pedoMeter = CMPedometer()
+    
+    override func viewWillAppear(animated: Bool) {
+        healthManager?.authorizeHealthKit { (authorized,  error) -> Void in
+            if authorized {
+                self.healthManager?.recentSteps({steps, error in
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.numberOfStepsLabel.text = "Loading previous steps"
+                        self.totalSteps = Int((steps[HealthManager.TOTAL_STEPS_COUNT_AS_DOUBE] as? Int)!)
+                        print(steps[HealthManager.STEP_RECORD_ARRAY])
+                        self.numberOfStepsLabel.text = "\(self.totalSteps)"
+                    }
+                })
+            }
+            else
+            {
+                print("HealthKit authorization denied!")
+                if error != nil {
+                    print("\(error)")
+                }
+            }
+        }    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +49,7 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = themeColor
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         startButton.backgroundColor = themeColor
-        
-        
+
         let cal = NSCalendar.currentCalendar()
         let comps = cal.components(NSCalendarUnit.Year , fromDate: NSDate())
         comps.hour = 0
@@ -52,8 +72,9 @@ class ViewController: UIViewController {
                     if error != nil {
                         print("There was an error obtaining pedometer data: \(error)")
                     } else {
+                        self.totalSteps += Int(data!.numberOfSteps)
                         dispatch_async(dispatch_get_main_queue()) {
-                            self.numberOfStepsLabel.text = "\(data!.numberOfSteps)"
+                            self.numberOfStepsLabel.text = "\(self.totalSteps)"
                             //self.distanceLabel.text = "\(self.lengthFormatter.stringFromMeters(data.distance as! Double))"
                         }
                     }
@@ -62,8 +83,11 @@ class ViewController: UIViewController {
             else {
                 startButton.setTitle("Start", forState: UIControlState.Normal)
                 startButton.backgroundColor = themeColor
-                
                 self.pedoMeter.stopPedometerUpdates()
+                
+                let destinationVC = self.storyboard!.instantiateViewControllerWithIdentifier("SyncViewController") as! SyncViewController
+                destinationVC.totalSteps = Int(self.numberOfStepsLabel.text!)!;
+                self.navigationController?.pushViewController(destinationVC, animated: true)
             }
         }
     }
