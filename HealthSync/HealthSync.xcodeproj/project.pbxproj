@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B5F35144653D3BBF661DF54 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27218DCDDC812EA2923256F8 /* Pods.framework */; };
 		6239F9A01BE1AD7C00E0D396 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239F99F1BE1AD7C00E0D396 /* NavigationController.swift */; };
 		6269B82D1BD4A4DB008C2803 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6269B82C1BD4A4DB008C2803 /* AppDelegate.swift */; };
 		6269B82F1BD4A4DB008C2803 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6269B82E1BD4A4DB008C2803 /* ViewController.swift */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27218DCDDC812EA2923256F8 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		374F0AE94676B0B8F69AD3A5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6239F99F1BE1AD7C00E0D396 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		6269B8291BD4A4DB008C2803 /* HealthSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6269B82C1BD4A4DB008C2803 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -31,6 +34,7 @@
 		62FBFAF71BEE7D7900C85445 /* HealthSync.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HealthSync.entitlements; sourceTree = "<group>"; };
 		62FBFAFB1BEE7DD600C85445 /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		62FBFAFD1BEE9BDD00C85445 /* SyncViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
+		6E5B96829E8E6EFD4A3217F6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +43,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62FBFAF61BEE7D7900C85445 /* HealthKit.framework in Frameworks */,
+				1B5F35144653D3BBF661DF54 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +56,8 @@
 				62FBFAF51BEE7D7900C85445 /* HealthKit.framework */,
 				6269B82B1BD4A4DB008C2803 /* HealthSync */,
 				6269B82A1BD4A4DB008C2803 /* Products */,
+				793D3BFA2E34B25989DC518A /* Pods */,
+				7DFA86A6304BD86B2808B3AA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +102,23 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		793D3BFA2E34B25989DC518A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6E5B96829E8E6EFD4A3217F6 /* Pods.debug.xcconfig */,
+				374F0AE94676B0B8F69AD3A5 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7DFA86A6304BD86B2808B3AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27218DCDDC812EA2923256F8 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -102,9 +126,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6269B83B1BD4A4DB008C2803 /* Build configuration list for PBXNativeTarget "HealthSync" */;
 			buildPhases = (
+				14E2C52F8B143B440B99B8D0 /* Check Pods Manifest.lock */,
 				6269B8251BD4A4DB008C2803 /* Sources */,
 				6269B8261BD4A4DB008C2803 /* Frameworks */,
 				6269B8271BD4A4DB008C2803 /* Resources */,
+				10C1DE60FC05274F27416EC5 /* Embed Pods Frameworks */,
+				AB4D8C90594D8E3AF585DEEB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -165,6 +192,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10C1DE60FC05274F27416EC5 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		14E2C52F8B143B440B99B8D0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AB4D8C90594D8E3AF585DEEB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6269B8251BD4A4DB008C2803 /* Sources */ = {
@@ -284,6 +359,7 @@
 		};
 		6269B83C1BD4A4DB008C2803 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E5B96829E8E6EFD4A3217F6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HealthSync/HealthSync.entitlements;
@@ -296,6 +372,7 @@
 		};
 		6269B83D1BD4A4DB008C2803 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 374F0AE94676B0B8F69AD3A5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HealthSync/HealthSync.entitlements;
