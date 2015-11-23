@@ -60,7 +60,10 @@ class HealthManager {
         // Our search predicate which will fetch data from now until a day ago
         // (Note, 1.day comes from an extension
         // You'll want to change that to your own NSDate
-        let predicate = HKQuery.predicateForSamplesWithStartDate((NSDate() .dateByAddingTimeInterval(60*60*24*(-1))), endDate: NSDate(), options: .None)
+        let date = NSDate()
+        let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let startDate = cal.startOfDayForDate(date)
+        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: NSDate(), options: .None)
 
         if(!HKHealthStore.isHealthDataAvailable()) {
             return ;
