@@ -18,12 +18,12 @@ class FitBitManager {
     
     func doFitBitOAuth(){
         
-        let authorizeURL = BASE_AUTH_URL+"client_id="+Fitbit["clientID"]!
+        let authorizeURL = BASE_AUTH_URL+"client_id=" + FitBitCredentials.sharedInstance.fitBitValueForKey("clientID")!
         let scope = scopes.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())
         
         let oauthswift = OAuth2Swift(
-            consumerKey:    Fitbit["consumerKey"]!,
-            consumerSecret: Fitbit["consumerSecret"]!,
+            consumerKey:    FitBitCredentials.sharedInstance.fitBitValueForKey("consumerKey")!,
+            consumerSecret: FitBitCredentials.sharedInstance.fitBitValueForKey("consumerSecret")!,
             authorizeUrl:   authorizeURL,
             responseType:   "code"
         )
@@ -39,7 +39,7 @@ class FitBitManager {
         
         let profileURL = BASE_RESOURCE_URL+"/profile.json"
         
-        let header = ["Authorization":"Bearer "+Fitbit["accessToken"]!]
+        let header = ["Authorization":"Bearer " + FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken")!]
         
         Alamofire.request(.GET, profileURL,headers:header).responseJSON{ response in
             guard response.result.error == nil else {

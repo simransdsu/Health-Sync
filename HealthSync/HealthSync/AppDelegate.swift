@@ -57,8 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let code = (url.query!).characters.split{$0 == "="}.map(String.init)
         parameter["code"] = code[1]
         
-        print(parameter)
-        
         let urlstring =  "https://api.fitbit.com/oauth2/token?";
         
         Alamofire.request(.POST, urlstring,parameters: parameter, headers:headers).responseJSON{ response in
@@ -71,8 +69,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             if let value: AnyObject = response.result.value {
                 let jsonObject = value as! NSDictionary
-                Fitbit["accessToken"] = jsonObject["access_token"] as? String
-                Fitbit["expiresIn"] = jsonObject["expires_in"] as? String
+                if let accessToken = jsonObject["access_token"] {
+                    FitBitCredentials.sharedInstance.setFitbitValue((accessToken as? String)!, withKey: "accessToken")
+                    FitBitCredentials.sharedInstance.setFitbitValue(String(jsonObject["expires_in"]!), withKey: "expiresIn")
+                }
             }
         }
         
