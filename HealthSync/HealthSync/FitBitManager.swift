@@ -49,7 +49,7 @@ class FitBitManager {
         
                     if let value: AnyObject = response.result.value {
                         print(value)
-                    }
+                    }  
                 }
         
     }
