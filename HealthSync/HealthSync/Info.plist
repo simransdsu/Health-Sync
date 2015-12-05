@@ -24,7 +24,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.girish.HealthSync</string>
+			<string>HealthSync</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>healthsync</string>
