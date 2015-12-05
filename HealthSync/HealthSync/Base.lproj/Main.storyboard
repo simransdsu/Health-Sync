@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GDt-Kx-8je">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GDt-Kx-8je">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps for today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jR7-MJ-mW8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Steps for today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jR7-MJ-mW8">
                                 <rect key="frame" x="134" y="68" width="333" height="75"/>
                                 <animations/>
                                 <constraints>
@@ -27,7 +27,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9N2-eH-05z">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9N2-eH-05z">
                                 <rect key="frame" x="175" y="151" width="250" height="69"/>
                                 <animations/>
                                 <constraints>
@@ -38,7 +38,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybh-HY-hgn">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybh-HY-hgn">
                                 <rect key="frame" x="232" y="285" width="137" height="51"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.5653540462143829" green="0.88616635101010099" blue="0.69191580616709569" alpha="1" colorSpace="calibratedRGB"/>
@@ -67,6 +67,7 @@
                             <constraint firstItem="jR7-MJ-mW8" firstAttribute="centerX" secondItem="9N2-eH-05z" secondAttribute="centerX" id="tNR-07-m5X"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="StepCounter" id="ocm-rY-d8t"/>
                     <navigationItem key="navigationItem" title="Health Sync" id="UxM-kE-U8Z"/>
                     <connections>
                         <outlet property="numberOfStepsLabel" destination="9N2-eH-05z" id="faN-MY-Pvu"/>
@@ -76,7 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1261" y="466"/>
+            <point key="canvasLocation" x="1307" y="-836"/>
         </scene>
         <!--Sync View Controller-->
         <scene sceneID="i23-Ds-dQs">
@@ -117,12 +118,140 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0q-xE-9BJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2222" y="466"/>
+            <point key="canvasLocation" x="2167" y="-836"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="GEk-Y5-xDZ">
+            <objects>
+                <tabBarController id="Hoo-CP-Pb3" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="KTE-Fk-KrZ"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="rEi-6X-EsA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="tZf-ob-BaS"/>
+                        <segue destination="a31-wF-Pbt" kind="relationship" relationship="viewControllers" id="Q4d-n8-9sM"/>
+                        <segue destination="Vf1-ms-vbr" kind="relationship" relationship="viewControllers" id="aIL-Ik-zav"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fTu-Yf-oiv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="364" y="-14"/>
+        </scene>
+        <!--Sync-All-->
+        <scene sceneID="3mA-LZ-cWS">
+            <objects>
+                <viewController id="a31-wF-Pbt" customClass="SyncAllViewController" customModule="HealthSync" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XiY-GS-Io3"/>
+                        <viewControllerLayoutGuide type="bottom" id="IS6-do-Vs0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nRZ-Yn-m88">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAt-gL-tBJ">
+                                <rect key="frame" x="20" y="360" width="175" height="58"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.56535404619999996" green="0.88616635099999996" blue="0.69191580620000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="oLQ-tj-9i2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <state key="normal" title="Fitbit Authorize">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doFitbitAuth:" destination="a31-wF-Pbt" eventType="touchUpInside" id="6qg-7F-cKt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pw-it-o8X">
+                                <rect key="frame" x="20" y="260" width="560" height="60"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.56535404619999996" green="0.88616635099999996" blue="0.69191580620000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="xvZ-Po-hgi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <state key="normal" title="Sync Healthkit and Fitbit">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="You can sync your steps between your Fitbit Device and Health app.  There still might be some inconsistancies. " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cio-5p-KQh">
+                                <rect key="frame" x="20" y="72" width="560" height="180"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1S9-bx-9du">
+                                <rect key="frame" x="405" y="361" width="175" height="57"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.56535404619999996" green="0.88616635099999996" blue="0.69191580620000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="I0q-oC-OHC"/>
+                                    <constraint firstAttribute="width" constant="175" id="WMT-e7-Ouu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <state key="normal" title="Get Profile">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getProfile:" destination="a31-wF-Pbt" eventType="touchUpInside" id="krA-FG-YxE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PAt-gL-tBJ" firstAttribute="bottom" secondItem="1S9-bx-9du" secondAttribute="bottom" id="9tt-Ud-fLl"/>
+                            <constraint firstItem="PAt-gL-tBJ" firstAttribute="top" secondItem="5pw-it-o8X" secondAttribute="bottom" constant="40" id="DUS-a9-Om8"/>
+                            <constraint firstItem="1S9-bx-9du" firstAttribute="trailing" secondItem="nRZ-Yn-m88" secondAttribute="trailingMargin" id="FX7-2L-ODL"/>
+                            <constraint firstItem="PAt-gL-tBJ" firstAttribute="leading" secondItem="5pw-it-o8X" secondAttribute="leading" id="JWV-ls-Pdt"/>
+                            <constraint firstItem="5pw-it-o8X" firstAttribute="leading" secondItem="cio-5p-KQh" secondAttribute="leading" id="RQp-d2-kXf"/>
+                            <constraint firstItem="cio-5p-KQh" firstAttribute="trailing" secondItem="5pw-it-o8X" secondAttribute="trailing" id="RTs-2i-BEo"/>
+                            <constraint firstItem="PAt-gL-tBJ" firstAttribute="centerY" secondItem="1S9-bx-9du" secondAttribute="centerY" id="RoL-ef-sh0"/>
+                            <constraint firstItem="cio-5p-KQh" firstAttribute="top" secondItem="XiY-GS-Io3" secondAttribute="bottom" constant="8" symbolic="YES" id="WfT-oP-wFG"/>
+                            <constraint firstItem="5pw-it-o8X" firstAttribute="trailing" secondItem="1S9-bx-9du" secondAttribute="trailing" id="aln-Yg-rPv"/>
+                            <constraint firstItem="PAt-gL-tBJ" firstAttribute="leading" secondItem="nRZ-Yn-m88" secondAttribute="leadingMargin" id="ixP-U4-wwy"/>
+                            <constraint firstItem="5pw-it-o8X" firstAttribute="top" secondItem="cio-5p-KQh" secondAttribute="bottom" constant="8" symbolic="YES" id="k0F-Ee-G9f"/>
+                            <constraint firstItem="IS6-do-Vs0" firstAttribute="top" secondItem="PAt-gL-tBJ" secondAttribute="bottom" constant="133" id="t69-pI-Fys"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Sync-All" id="olg-ar-72r"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GZd-G7-yhq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1307" y="-26"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="2mO-zA-JHt">
+            <objects>
+                <viewController id="Vf1-ms-vbr" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5jS-1k-OR3"/>
+                        <viewControllerLayoutGuide type="bottom" id="4NI-Cm-eCJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mAQ-E3-LxY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" id="BDI-cd-SgV"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uZo-Ov-upn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1307" y="892"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="kgH-vX-psR">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GDt-Kx-8je" customClass="NavigationController" customModule="HealthSync" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Zp5-DX-jio"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MaP-cr-g1K">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -131,12 +260,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="iRK-9F-f2O"/>
+                        <segue destination="Hoo-CP-Pb3" kind="relationship" relationship="rootViewController" id="8lX-3m-yvP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aQ1-We-ro3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="565" y="461"/>
+            <point key="canvasLocation" x="-379" y="-14"/>
         </scene>
     </scenes>
 </document>

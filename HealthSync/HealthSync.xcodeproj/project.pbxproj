@@ -17,6 +17,9 @@
 		62FBFAF61BEE7D7900C85445 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62FBFAF51BEE7D7900C85445 /* HealthKit.framework */; };
 		62FBFAFC1BEE7DD600C85445 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FBFAFB1BEE7DD600C85445 /* HealthManager.swift */; };
 		62FBFAFE1BEE9BDD00C85445 /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FBFAFD1BEE9BDD00C85445 /* SyncViewController.swift */; };
+		FDDB552F1C0243E3009C3FA0 /* FitBitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB552E1C0243E3009C3FA0 /* FitBitManager.swift */; };
+		FDDB55311C0246AB009C3FA0 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB55301C0246AB009C3FA0 /* Constant.swift */; };
+		FDDB55331C02474D009C3FA0 /* SyncAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB55321C02474D009C3FA0 /* SyncAllViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		62FBFAFB1BEE7DD600C85445 /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		62FBFAFD1BEE9BDD00C85445 /* SyncViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
 		6E5B96829E8E6EFD4A3217F6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		FDDB552E1C0243E3009C3FA0 /* FitBitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitBitManager.swift; sourceTree = "<group>"; };
+		FDDB55301C0246AB009C3FA0 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		FDDB55321C02474D009C3FA0 /* SyncAllViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncAllViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,7 @@
 				6239F99F1BE1AD7C00E0D396 /* NavigationController.swift */,
 				6269B82E1BD4A4DB008C2803 /* ViewController.swift */,
 				62FBFAFD1BEE9BDD00C85445 /* SyncViewController.swift */,
+				FDDB55321C02474D009C3FA0 /* SyncAllViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -98,6 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				62FBFAFB1BEE7DD600C85445 /* HealthManager.swift */,
+				FDDB552E1C0243E3009C3FA0 /* FitBitManager.swift */,
+				FDDB55301C0246AB009C3FA0 /* Constant.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -153,7 +162,7 @@
 				TargetAttributes = {
 					6269B8281BD4A4DB008C2803 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = 8J72S889CZ;
+						DevelopmentTeam = WK5JSP27UR;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -246,9 +255,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDDB55311C0246AB009C3FA0 /* Constant.swift in Sources */,
 				6269B82F1BD4A4DB008C2803 /* ViewController.swift in Sources */,
 				6239F9A01BE1AD7C00E0D396 /* NavigationController.swift in Sources */,
+				FDDB55331C02474D009C3FA0 /* SyncAllViewController.swift in Sources */,
 				6269B82D1BD4A4DB008C2803 /* AppDelegate.swift in Sources */,
+				FDDB552F1C0243E3009C3FA0 /* FitBitManager.swift in Sources */,
 				62FBFAFC1BEE7DD600C85445 /* HealthManager.swift in Sources */,
 				62FBFAFE1BEE9BDD00C85445 /* SyncViewController.swift in Sources */,
 			);
@@ -363,10 +375,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HealthSync/HealthSync.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HealthSync/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ios.CompleteStack.HealthSync;
+				PRODUCT_BUNDLE_IDENTIFIER = HealthSync;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -376,10 +391,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HealthSync/HealthSync.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HealthSync/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ios.CompleteStack.HealthSync;
+				PRODUCT_BUNDLE_IDENTIFIER = HealthSync;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

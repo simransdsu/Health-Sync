@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,6 +42,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        
+        var parameter = Dictionary<String, AnyObject>()
+        var headers = Dictionary<String, String>()
+        
+        headers["Authorization"] = "Basic MjI5UjZWOjFlNDkzOGVlMzA3ZDk4MmI2NWFmYmQyZGYwYTU1ZDBi"
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+        
+        parameter["grant_type"] = "authorization_code"
+        parameter["client_id"] = "229R6V"
+        parameter["redirect_uri"] = "healthsync://oauth"
+        let code = (url.query!).characters.split{$0 == "="}.map(String.init)
+        parameter["code"] = code[1]
+        
+        let urlstring =  "https://api.fitbit.com/oauth2/token?";
+        
+        Alamofire.request(.POST, urlstring,parameters: parameter, headers:headers).responseJSON{ response in
+            guard response.result.error == nil else {
+                // got an error in getting the data, need to handle it
+                print("error calling GET on /posts/1")
+                print(response.result.error!)
+                return
+            }
+            
+            if let value: AnyObject = response.result.value {
+                let jsonObject = value as! NSDictionary
+                if let accessToken = jsonObject["access_token"] {
+                    FitBitCredentials.sharedInstance.setFitbitValue((accessToken as? String)!, withKey: "accessToken")
+                    FitBitCredentials.sharedInstance.setFitbitValue(String(jsonObject["expires_in"]!), withKey: "expiresIn")
+                }
+            }
+        }
+        
+        return true
+    }
+    
+
+    
 
 }
 
