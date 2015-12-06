@@ -78,7 +78,7 @@ class FitBitManager {
 
     }
     
-    func getProfileData(completion:(result:AnyObject)->Void) {
+    func getProfileData(completion:(result:AnyObject?)->Void) {
         
         refereshRequest({(refreshToken, accessToken) -> Void in
             let fitbit_profile_url = self.BASE_RESOURCE_URL+"/profile.json"
@@ -177,7 +177,7 @@ class FitBitManager {
         let activityDate = getActivityDate()
         let calories = getCalories(steps)
         
-        parameter["activityId"] = walking_activity_id
+        parameter[" "] = walking_activity_id
         parameter["startTime"] = startTime
         parameter["durationMillis"] = durationMillis
         parameter["date"] = activityDate
