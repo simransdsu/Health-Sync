@@ -37,34 +37,70 @@ class FitBitManager {
         })
     }
     
-    func getProfileData(completion:(result:AnyObject)->Void){
+    func getProfileData(completion:(result:AnyObject)->Void) {
         
-        let fitbit_profile_url = BASE_RESOURCE_URL+"/profile.json"
+        refereshRequest({(refreshToken, accessToken) -> Void in
+            let fitbit_profile_url = self.BASE_RESOURCE_URL+"/profile.json"
+            
+            let header = ["Authorization":"Bearer " + accessToken]
+            
+            Alamofire.request(.GET, fitbit_profile_url,headers:header).responseJSON{ response in
+                guard response.result.error == nil else {
+                    print(response.result.error!)
+                    return
+                }
+                
+                if let result: AnyObject = response.result.value {
+                    let jsonObject  =  result as! NSDictionary
+                    let user = jsonObject["user"]!
+                    
+                    let age  = user["age"]!?.integerValue
+                    let avatar_url = (user["avatar"]! as! String)
+                    let fullName = (user["fullName"]! as! String)
+                    let gender = (user["gender"]! as! String)
+                    let height = user["height"]!?.doubleValue
+                    let weight = user["weight"]!?.doubleValue
+                    let fitbitProfile = FitBitUserProfile(age: age!, avatar_url: avatar_url, fullName: fullName, gender: gender, height: height!, weight: weight!)
+                    completion(result:fitbitProfile)
+                }
+            }
+        })
+    }
+    
+    func refereshRequest(completion: (refreshToken: String, accessToken: String) -> Void) {
         
-        let header = ["Authorization":"Bearer " + (FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken")! )]
+        let _refreshToken:URLStringConvertible = FitBitCredentials.sharedInstance.fitBitValueForKey("refreshToken")!
         
-        Alamofire.request(.GET, fitbit_profile_url,headers:header).responseJSON{ response in
+        let refreshTokenURL = "https://api.fitbit.com/oauth2/token?grant_type=refresh_token&refresh_token=\(_refreshToken)"
+        var headers = Dictionary<String, String>()
+        headers["Authorization"] = "Basic MjI5UjZWOjFlNDkzOGVlMzA3ZDk4MmI2NWFmYmQyZGYwYTU1ZDBi"
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+        
+        let parameters = Dictionary<String, AnyObject>()
+        
+        Alamofire.request(.POST, refreshTokenURL, parameters: parameters, headers:headers).responseJSON{ response in
+            
             guard response.result.error == nil else {
+                // got an error in getting the data, need to handle it
+                print("error calling GET on /posts/1")
                 print(response.result.error!)
                 return
             }
             
-            if let result: AnyObject = response.result.value {
-                let jsonObject  =  result as! NSDictionary
-                let user = jsonObject["user"]!
-                
-                let age  = user["age"]!?.integerValue
-                let avatar_url = (user["avatar"]! as! String)
-                let fullName = (user["fullName"]! as! String)
-                let gender = (user["gender"]! as! String)
-                let height = user["height"]!?.doubleValue
-                let weight = user["weight"]!?.doubleValue
-                let fitbitProfile = FitBitUserProfile(age: age!, avatar_url: avatar_url, fullName: fullName, gender: gender, height: height!, weight: weight!)
-                completion(result:fitbitProfile)
+            if let value: AnyObject = response.result.value {
+                let jsonObject = value as! NSDictionary
+                print(jsonObject)
+                if let newAccessToken = jsonObject["access_token"] {
+                    let newRefreshToken = jsonObject["refresh_token"]
+                    print(newAccessToken)
+                    print(newRefreshToken)
+                    FitBitCredentials.sharedInstance.setFitbitValue((newAccessToken as! String), withKey: "accessToken")
+                    FitBitCredentials.sharedInstance.setFitbitValue((newRefreshToken as! String), withKey: "refreshToken")
+                    completion(refreshToken: (newRefreshToken as! String), accessToken: (newAccessToken as! String))
+                }
             }
         }
     }
-    
     
     func getFitbitSteps(){
         
