@@ -18,20 +18,26 @@ class SyncAllViewController: UIViewController {
     @IBAction func doFitbitAuth(sender: UIButton) {
         
         fitbitManager.doFitBitOAuth()
-/*
-        if let accessToken = FitBitCredentials.sharedInstance.fitBitValueForKey("access_token") {
+        print(FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken"))
+        if let accessToken = FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken") {
             if accessToken.characters.count == 0 {
                 fitbitManager.doFitBitOAuth()
             } else {
                 print("Already authenticated")
             }
         }
-*/
+        else {
+   
+            fitbitManager.doFitBitOAuth()
+        }
+
     }
     
     @IBAction func getProfile(sender: UIButton) {
         
-        fitbitManager.getProfileData()
+        fitbitManager.getProfileData({(result) -> Void in
+            print(result)
+        })
         
         
     }

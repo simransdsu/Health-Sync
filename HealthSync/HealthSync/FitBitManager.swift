@@ -13,7 +13,7 @@ import OAuthSwift
 class FitBitManager {
     
     let BASE_AUTH_URL = "https://www.fitbit.com/oauth2/authorize?"
-    let BASE_RESOURCE_URL = "https://api.fitbit.com/1/user/-"
+    let BASE_RESOURCE_URL = "https://api.fitbit.com/1/user/-/"
     let scopes  = "activity profile weight"
     
     func doFitBitOAuth(){
@@ -35,23 +35,61 @@ class FitBitManager {
         })
     }
     
-    func getProfileData(){
+    func getProfileData(completion:(result: AnyObject) -> Void) {
+       
+        refereshRequest({(refreshToken, accessToken) -> Void in
+            
+            let profileURL = self.BASE_RESOURCE_URL + "profile.json"
+            let header = ["Authorization":"Bearer " + accessToken]
+            
+            Alamofire.request(.GET, profileURL,headers:header).responseJSON{ response in
+                
+                guard response.result.error == nil else {
+                    print(response.result.error!)
+                    return
+                }
+                
+                if let value: AnyObject = response.result.value {
+                    print(value)
+                    completion(result: value)
+                }
+            }
+        })
+    }
+    
+    func refereshRequest(completion: (refreshToken: String, accessToken: String) -> Void) {
         
-        let profileURL = BASE_RESOURCE_URL+"/profile.json"
+        let _refreshToken:URLStringConvertible = FitBitCredentials.sharedInstance.fitBitValueForKey("refreshToken")!
         
-        let header = ["Authorization":"Bearer " + FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken")!]
+        let refreshTokenURL = "https://api.fitbit.com/oauth2/token?grant_type=refresh_token&refresh_token=\(_refreshToken)"
+        var headers = Dictionary<String, String>()
+        headers["Authorization"] = "Basic MjI5UjZWOjFlNDkzOGVlMzA3ZDk4MmI2NWFmYmQyZGYwYTU1ZDBi"
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
         
-        Alamofire.request(.GET, profileURL,headers:header).responseJSON{ response in
+        let parameters = Dictionary<String, AnyObject>()
+            
+        Alamofire.request(.POST, refreshTokenURL, parameters: parameters, headers:headers).responseJSON{ response in
+            
             guard response.result.error == nil else {
+                // got an error in getting the data, need to handle it
+                print("error calling GET on /posts/1")
                 print(response.result.error!)
                 return
             }
             
             if let value: AnyObject = response.result.value {
-                print(value)
+                let jsonObject = value as! NSDictionary
+                print(jsonObject)
+                if let newAccessToken = jsonObject["access_token"] {
+                    let newRefreshToken = jsonObject["refresh_token"]
+                    print(newAccessToken)
+                    print(newRefreshToken)
+                    FitBitCredentials.sharedInstance.setFitbitValue((newAccessToken as! String), withKey: "accessToken")
+                    FitBitCredentials.sharedInstance.setFitbitValue((newRefreshToken as! String), withKey: "refreshToken")
+                    completion(refreshToken: (newRefreshToken as! String), accessToken: (newAccessToken as! String))
+                }
             }
         }
-        
     }
     
     

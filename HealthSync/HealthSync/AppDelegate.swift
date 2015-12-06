@@ -70,8 +70,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let value: AnyObject = response.result.value {
                 let jsonObject = value as! NSDictionary
                 if let accessToken = jsonObject["access_token"] {
-                    FitBitCredentials.sharedInstance.setFitbitValue((accessToken as? String)!, withKey: "accessToken")
+                    let accessToken = (accessToken as? String)!
+                    FitBitCredentials.sharedInstance.setFitbitValue(accessToken, withKey: "accessToken")
                     FitBitCredentials.sharedInstance.setFitbitValue(String(jsonObject["expires_in"]!), withKey: "expiresIn")
+                    let refreshToken = String(jsonObject["refresh_token"]!)
+                    FitBitCredentials.sharedInstance.setFitbitValue(refreshToken, withKey: "refreshToken")
                 }
             }
         }
