@@ -72,6 +72,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if let accessToken = jsonObject["access_token"] {
                     FitBitCredentials.sharedInstance.setFitbitValue((accessToken as? String)!, withKey: "accessToken")
                     FitBitCredentials.sharedInstance.setFitbitValue(String(jsonObject["expires_in"]!), withKey: "expiresIn")
+                    let refreshToken = String(jsonObject["refresh_token"]!)
+                    FitBitCredentials.sharedInstance.setFitbitValue(refreshToken, withKey: "refreshToken")
                 }
             }
         }
