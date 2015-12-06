@@ -20,7 +20,8 @@ class SyncViewController: UIViewController {
         totalSteps += 50;
         print("Steps after dummy addition: \(totalSteps)")
 */
-        // The code below this should not be commented at any costs.
+        // The code above this should not be commented at any costs if Uncommented.
+        
         healthManager.recentSteps({stepMap, error in
             print("Recent Steps: \(stepMap[HealthManager.TOTAL_STEPS_COUNT_AS_DOUBE])")
         })

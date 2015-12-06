@@ -9,33 +9,33 @@
 import UIKit
 
 class SyncAllViewController: UIViewController {
-    
+
     let fitbitManager = FitBitManager()
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+
     @IBAction func doFitbitAuth(sender: UIButton) {
-        
-        fitbitManager.doFitBitOAuth()
-/*
-        if let accessToken = FitBitCredentials.sharedInstance.fitBitValueForKey("access_token") {
-            if accessToken.characters.count == 0 {
-                fitbitManager.doFitBitOAuth()
-            } else {
-                print("Already authenticated")
-            }
+
+        let accessToken = FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken")
+        if accessToken == nil || accessToken!.characters.count == 0 {
+            let secondViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FitbitLoginViewController") as! FitbitLoginViewController
+            secondViewController.delegate = self
+            secondViewController.methodStatus = "getProfileData"
+            self.navigationController?.pushViewController(secondViewController, animated: true)
         }
-*/
+        
     }
     
     @IBAction func getProfile(sender: UIButton) {
         
+    }
+    
+    func getProfileData() {
         fitbitManager.getProfileData({(result)-> Void in
-          let test =   result as! FitBitUserProfile
-            print(test.weight)
+            let test =   result as! FitBitUserProfile
+            print("========================== Weight is: \(test.weight)")
         })
-        
-        
     }
 }
