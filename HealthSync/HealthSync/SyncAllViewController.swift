@@ -31,7 +31,10 @@ class SyncAllViewController: UIViewController {
     
     @IBAction func getProfile(sender: UIButton) {
         
-        fitbitManager.getProfileData()
+        fitbitManager.getProfileData({(result)-> Void in
+          let test =   result as! FitBitUserProfile
+            print(test.weight)
+        })
         
         
     }
