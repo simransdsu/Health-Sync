@@ -143,10 +143,9 @@ class FitBitManager {
         }
     }
     
-    func getFitbitSteps(){
+    func getFitbitSteps(completion:(result:Int)->Void){
         
         let fitbit_activity_steps_url = BASE_RESOURCE_URL+"/activities/steps/date/today/1d.json"
-        
         let header = ["Authorization":"Bearer " + (FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken")! )]
         
         Alamofire.request(.GET, fitbit_activity_steps_url,headers:header).responseJSON{ response in
@@ -159,8 +158,8 @@ class FitBitManager {
                 let activitySteps = jsonObject["activities-steps"]!
                 let activityArray = activitySteps as! NSArray
                 let activity = activityArray[0] as! NSDictionary
-                let steps = (activity["value"]! as! String)
-                FitBitCredentials.sharedInstance.setFitbitValue(steps, withKey: "fitbit_steps")
+                let steps = activity["value"]?.integerValue
+                completion(result:steps!)
             }
         }
     }
@@ -197,12 +196,12 @@ class FitBitManager {
         }
     }
     
-    private func getCalories(steps:Int)->Double{
-        return Double(steps) * 0.05
+    private func getCalories(steps:Int)->Int{
+        return Int(Double(steps) * 0.05)
     }
     
     private func getApproximateActivityTime(steps:Int)-> Int {
-        return steps*500; //  approx 2 steps per sec
+        return Int(steps*500); //  approx 2 steps per sec
     }
     
     private func getStartTime()->String{

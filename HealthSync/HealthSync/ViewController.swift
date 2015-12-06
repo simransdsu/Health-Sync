@@ -10,10 +10,10 @@ import UIKit
 import CoreMotion
 
 class ViewController: UIViewController {
-
+    
     let themeColor = UIColor(red: 96/256, green: 191/256, blue: 186/256, alpha: 1)
     var healthManager: HealthManager? =  HealthManager()
-
+    
     @IBOutlet weak var numberOfStepsLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = themeColor
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         startButton.backgroundColor = themeColor
-
+        
         let cal = NSCalendar.currentCalendar()
         let comps = cal.components(NSCalendarUnit.Year , fromDate: NSDate())
         comps.hour = 0
@@ -97,12 +97,12 @@ class ViewController: UIViewController {
             }
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
