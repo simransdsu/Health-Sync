@@ -24,6 +24,8 @@ class SyncAllViewController: UIViewController {
             secondViewController.delegate = self
             secondViewController.methodStatus = "getProfileData"
             self.navigationController?.pushViewController(secondViewController, animated: true)
+        } else {
+            self.getProfileData()
         }
         
     }

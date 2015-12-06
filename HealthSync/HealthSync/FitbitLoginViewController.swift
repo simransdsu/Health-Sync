@@ -13,6 +13,8 @@ class FitbitLoginViewController: UIViewController {
     var delegate: AnyObject?
     var methodStatus: String?
 
+    @IBOutlet weak var loginBackBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,21 +27,34 @@ class FitbitLoginViewController: UIViewController {
     }
     
     @IBAction func loginWithFitbit(sender: AnyObject) {
-        let fbManager = FitBitManager()
-        fbManager.doFitBitOAuth({(result) -> Void in
+        if (self.loginBackBtn.titleLabel?.text == "Login With Fitbit") {
+            let fbManager = FitBitManager()
+            fbManager.doFitBitOAuth({(result) -> Void in
+                
+                self.loginBackBtn.setTitle("Done", forState: UIControlState.Normal)
+            })
+        } else {
+            
+            let parentViewController = (self.delegate as! SyncAllViewController)
+            parentViewController.getProfileData();
             self.navigationController?.popViewControllerAnimated(true)
-        })
+        }
         
     }
     
     override func viewWillDisappear(animated: Bool) {
-        let parentViewController = (self.delegate as! SyncAllViewController)
+        
 
-        if(self.isMovingFromParentViewController()) {
-            if(self.methodStatus == "getProfileData") {
-                parentViewController.getProfileData();
-            }
-        }
+        
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+//        if(self.isMovingFromParentViewController()) {
+//            if(self.methodStatus == "getProfileData") {
+//                let parentViewController = (self.delegate as! SyncAllViewController)
+//                parentViewController.getProfileData();
+//            }
+//        }
     }
 
     /*
