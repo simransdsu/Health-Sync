@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GDt-Kx-8je">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GDt-Kx-8je">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -215,6 +217,9 @@
                                 <state key="normal" title="Sync Healthkit and Fitbit">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="syncAll:" destination="a31-wF-Pbt" eventType="touchUpInside" id="rGz-fD-t4i"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="You can sync your steps between your Fitbit Device and Health app.  There still might be some inconsistancies. " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cio-5p-KQh">
                                 <rect key="frame" x="20" y="72" width="560" height="180"/>
@@ -266,7 +271,7 @@
         <!--Profile-->
         <scene sceneID="2mO-zA-JHt">
             <objects>
-                <viewController id="Vf1-ms-vbr" sceneMemberID="viewController">
+                <viewController id="Vf1-ms-vbr" customClass="ProfileViewController" customModule="HealthSync" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5jS-1k-OR3"/>
                         <viewControllerLayoutGuide type="bottom" id="4NI-Cm-eCJ"/>
@@ -274,10 +279,116 @@
                     <view key="view" contentMode="scaleToFill" id="mAQ-E3-LxY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGW-6X-Qk2">
+                                <rect key="frame" x="34" y="321" width="59" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ub7-B7-zEE">
+                                <rect key="frame" x="34" y="366" width="44" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="0g1-4k-one"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="        --" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abg-CV-Sbf">
+                                <rect key="frame" x="109" y="366" width="471" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="il1-SH-nsM">
+                                <rect key="frame" x="34" y="406" width="71" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="        --" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7e-3R-C1B">
+                                <rect key="frame" x="109" y="406" width="471" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tv1-zs-Yol">
+                                <rect key="frame" x="34" y="446" width="71" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="        --" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76n-ap-beP">
+                                <rect key="frame" x="109" y="446" width="471" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="        --" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccm-lS-slL">
+                                <rect key="frame" x="109" y="321" width="471" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="tb4-pF-CzC">
+                                <rect key="frame" x="228" y="110" width="145" height="145"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="145" id="Bnh-fI-shK"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="76n-ap-beP" firstAttribute="leading" secondItem="tv1-zs-Yol" secondAttribute="trailing" constant="4" id="3UQ-wW-pFB"/>
+                            <constraint firstItem="m7e-3R-C1B" firstAttribute="trailing" secondItem="76n-ap-beP" secondAttribute="trailing" id="68q-Dg-M8z"/>
+                            <constraint firstItem="rGW-6X-Qk2" firstAttribute="leading" secondItem="mAQ-E3-LxY" secondAttribute="leadingMargin" constant="14" id="6wC-rg-TsR"/>
+                            <constraint firstItem="m7e-3R-C1B" firstAttribute="baseline" secondItem="il1-SH-nsM" secondAttribute="firstBaseline" id="AQa-Bh-ljh"/>
+                            <constraint firstItem="Abg-CV-Sbf" firstAttribute="baseline" secondItem="Ub7-B7-zEE" secondAttribute="firstBaseline" id="AdX-2a-WIN"/>
+                            <constraint firstItem="m7e-3R-C1B" firstAttribute="leading" secondItem="il1-SH-nsM" secondAttribute="trailing" constant="4" id="CGp-LB-r8o"/>
+                            <constraint firstItem="rGW-6X-Qk2" firstAttribute="leading" secondItem="Ub7-B7-zEE" secondAttribute="leading" id="GpL-H3-JuZ"/>
+                            <constraint firstItem="il1-SH-nsM" firstAttribute="top" secondItem="Ub7-B7-zEE" secondAttribute="bottom" constant="19" id="H20-gG-eYQ"/>
+                            <constraint firstItem="Ub7-B7-zEE" firstAttribute="top" secondItem="rGW-6X-Qk2" secondAttribute="bottom" constant="24" id="KEe-6g-JNK"/>
+                            <constraint firstItem="tv1-zs-Yol" firstAttribute="baseline" secondItem="76n-ap-beP" secondAttribute="baseline" id="LGf-J5-8dI"/>
+                            <constraint firstItem="tv1-zs-Yol" firstAttribute="top" secondItem="il1-SH-nsM" secondAttribute="bottom" constant="19" id="N3o-K6-TTs"/>
+                            <constraint firstItem="ccm-lS-slL" firstAttribute="top" secondItem="tb4-pF-CzC" secondAttribute="bottom" constant="66" id="ROa-mg-d4f"/>
+                            <constraint firstItem="76n-ap-beP" firstAttribute="baseline" secondItem="tv1-zs-Yol" secondAttribute="firstBaseline" id="UMO-Ua-Dei"/>
+                            <constraint firstItem="76n-ap-beP" firstAttribute="leading" secondItem="m7e-3R-C1B" secondAttribute="leading" id="X6S-mv-juw"/>
+                            <constraint firstItem="4NI-Cm-eCJ" firstAttribute="top" secondItem="tv1-zs-Yol" secondAttribute="bottom" constant="84" id="XbI-JD-Im8"/>
+                            <constraint firstItem="Ub7-B7-zEE" firstAttribute="leading" secondItem="il1-SH-nsM" secondAttribute="leading" id="XdU-f6-Twf"/>
+                            <constraint firstItem="Abg-CV-Sbf" firstAttribute="trailing" secondItem="ccm-lS-slL" secondAttribute="trailing" id="chY-WO-qnl"/>
+                            <constraint firstItem="Abg-CV-Sbf" firstAttribute="leading" secondItem="Ub7-B7-zEE" secondAttribute="trailing" constant="31" id="daT-7J-MQs"/>
+                            <constraint firstItem="ccm-lS-slL" firstAttribute="trailing" secondItem="mAQ-E3-LxY" secondAttribute="trailingMargin" id="f3X-UD-k0T"/>
+                            <constraint firstItem="Abg-CV-Sbf" firstAttribute="baseline" secondItem="Ub7-B7-zEE" secondAttribute="baseline" id="f49-de-M30"/>
+                            <constraint firstItem="il1-SH-nsM" firstAttribute="leading" secondItem="tv1-zs-Yol" secondAttribute="leading" id="hpU-ZN-g71"/>
+                            <constraint firstItem="Abg-CV-Sbf" firstAttribute="leading" secondItem="m7e-3R-C1B" secondAttribute="leading" id="n5M-3F-e9L"/>
+                            <constraint firstItem="tb4-pF-CzC" firstAttribute="centerX" secondItem="mAQ-E3-LxY" secondAttribute="centerX" id="p0s-rb-FZp"/>
+                            <constraint firstItem="il1-SH-nsM" firstAttribute="baseline" secondItem="m7e-3R-C1B" secondAttribute="baseline" id="qwX-KY-cXc"/>
+                            <constraint firstItem="Abg-CV-Sbf" firstAttribute="leading" secondItem="ccm-lS-slL" secondAttribute="leading" id="tby-UB-gQf"/>
+                            <constraint firstItem="m7e-3R-C1B" firstAttribute="trailing" secondItem="Abg-CV-Sbf" secondAttribute="trailing" id="ufc-G7-k2H"/>
+                            <constraint firstItem="tb4-pF-CzC" firstAttribute="top" secondItem="5jS-1k-OR3" secondAttribute="bottom" constant="46" id="xuq-Pu-xmH"/>
+                            <constraint firstItem="rGW-6X-Qk2" firstAttribute="baseline" secondItem="ccm-lS-slL" secondAttribute="firstBaseline" id="yZ7-ye-dVP"/>
+                            <constraint firstItem="ccm-lS-slL" firstAttribute="leading" secondItem="rGW-6X-Qk2" secondAttribute="trailing" constant="16" id="yir-CH-D0d"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="BDI-cd-SgV"/>
+                    <connections>
+                        <outlet property="ageInfo" destination="Abg-CV-Sbf" id="kXJ-tf-U9L"/>
+                        <outlet property="fitbitAvatar" destination="tb4-pF-CzC" id="Dkw-fz-lYb"/>
+                        <outlet property="genderInfo" destination="m7e-3R-C1B" id="WO8-SO-tXh"/>
+                        <outlet property="nameInfo" destination="ccm-lS-slL" id="avb-yP-atu"/>
+                        <outlet property="weightInfo" destination="76n-ap-beP" id="xKz-AQ-jDh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uZo-Ov-upn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -322,4 +433,7 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="profile" width="960" height="1280"/>
+    </resources>
 </document>
