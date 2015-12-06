@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     let pedoMeter = CMPedometer()
     
     override func viewWillAppear(animated: Bool) {
+        
         healthManager?.authorizeHealthKit { (authorized,  error) -> Void in
             if authorized {
                 self.healthManager?.recentSteps({steps, error in
@@ -45,7 +46,8 @@ class ViewController: UIViewController {
                     print("\(error)")
                 }
             }
-        }    }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
