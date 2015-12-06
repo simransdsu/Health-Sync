@@ -17,8 +17,9 @@ class FitBitManager {
     let scopes  = "activity profile weight"
     let walking_activity_id = "90013" // FitBit walking activity id
     let running_activity_id = "90009" // FitBit running activity id
+    var fitbitProfile: FitBitUserProfile?
     
-    func doFitBitOAuth(){
+    func doFitBitOAuth(completion: (result: AnyObject) -> Void){
         
         let authorizeURL = BASE_AUTH_URL+"client_id=" + (FitBitCredentials.sharedInstance.fitBitValueForKey("clientID")!)
         let scope = scopes.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())
@@ -35,6 +36,46 @@ class FitBitManager {
             }, failure: {(error:NSError!) -> Void in
                 print(error.localizedDescription)
         })
+        completion(result: "doFitBitOAuth")
+    }
+    
+    func getAuthInformation(url: NSURL, completion:(result: AnyObject) -> Void) {
+        
+        var parameter = Dictionary<String, AnyObject>()
+        var headers = Dictionary<String, String>()
+        
+        headers["Authorization"] = "Basic MjI5UjZWOjFlNDkzOGVlMzA3ZDk4MmI2NWFmYmQyZGYwYTU1ZDBi"
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+        
+        parameter["grant_type"] = "authorization_code"
+        parameter["client_id"] = "229R6V"
+        parameter["redirect_uri"] = "healthsync://oauth"
+        let code = (url.query!).characters.split{$0 == "="}.map(String.init)
+        parameter["code"] = code[1]
+        
+        let urlstring =  "https://api.fitbit.com/oauth2/token?";
+        
+        Alamofire.request(.POST, urlstring,parameters: parameter, headers:headers).responseJSON{ response in
+            guard response.result.error == nil else {
+                // got an error in getting the data, need to handle it
+                print("error calling GET on /posts/1")
+                print(response.result.error!)
+                return
+            }
+            
+            if let value: AnyObject = response.result.value {
+                let jsonObject = value as! NSDictionary
+                if let accessToken = jsonObject["access_token"] {
+                    FitBitCredentials.sharedInstance.setFitbitValue((accessToken as? String)!, withKey: "accessToken")
+                    FitBitCredentials.sharedInstance.setFitbitValue(String(jsonObject["expires_in"]!), withKey: "expiresIn")
+                    let refreshToken = String(jsonObject["refresh_token"]!)
+                    FitBitCredentials.sharedInstance.setFitbitValue(refreshToken, withKey: "refreshToken")
+                    
+                    completion(result: "getAuthInformation")
+                }
+            }
+        }
+
     }
     
     func getProfileData(completion:(result:AnyObject?)->Void) {
@@ -60,8 +101,8 @@ class FitBitManager {
                     let gender = (user["gender"]! as! String)
                     let height = user["height"]!?.doubleValue
                     let weight = user["weight"]!?.doubleValue
-                    let fitbitProfile = FitBitUserProfile(age: age!, avatar_url: avatar_url, fullName: fullName, gender: gender, height: height!, weight: weight!)
-                    completion(result:fitbitProfile)
+                    self.fitbitProfile = FitBitUserProfile(age: age!, avatar_url: avatar_url, fullName: fullName, gender: gender, height: height!, weight: weight!)
+                    completion(result:self.fitbitProfile!)
                 }
             }
         })

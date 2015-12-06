@@ -122,6 +122,39 @@
             </objects>
             <point key="canvasLocation" x="2167" y="-836"/>
         </scene>
+        <!--Fitbit Login View Controller-->
+        <scene sceneID="qHQ-lo-xFq">
+            <objects>
+                <viewController restorationIdentifier="FitbitLoginViewController" storyboardIdentifier="FitbitLoginViewController" id="RaW-aq-ef2" customClass="FitbitLoginViewController" customModule="HealthSync" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="74e-qV-YI9"/>
+                        <viewControllerLayoutGuide type="bottom" id="ALP-En-xSf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="My5-Dx-Qpl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Luj-kZ-mDU">
+                                <rect key="frame" x="244" y="50" width="112" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Login With Fitbit"/>
+                                <connections>
+                                    <action selector="loginWithFitbit:" destination="RaW-aq-ef2" eventType="touchUpInside" id="T9H-6q-cHB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Luj-kZ-mDU" firstAttribute="centerX" secondItem="My5-Dx-Qpl" secondAttribute="centerX" id="0Dq-hI-BZc"/>
+                            <constraint firstItem="Luj-kZ-mDU" firstAttribute="top" secondItem="74e-qV-YI9" secondAttribute="bottom" constant="30" id="Bgq-Rb-MFA"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e0S-WE-MYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="567" y="-978"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="GEk-Y5-xDZ">
             <objects>
@@ -377,6 +410,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aQ1-We-ro3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-379" y="-14"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Mda-Ns-l1g">
+            <objects>
+                <viewController id="ZEV-cF-xcU" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CYO-RY-kYG"/>
+                        <viewControllerLayoutGuide type="bottom" id="rrG-Qq-SGz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zk5-9t-1pc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="66O-g1-cyo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1974" y="194"/>
         </scene>
     </scenes>
     <resources>
