@@ -179,6 +179,9 @@
                                 <state key="normal" title="Sync Healthkit and Fitbit">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="syncAll:" destination="a31-wF-Pbt" eventType="touchUpInside" id="rGz-fD-t4i"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="You can sync your steps between your Fitbit Device and Health app.  There still might be some inconsistancies. " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cio-5p-KQh">
                                 <rect key="frame" x="20" y="72" width="560" height="180"/>
