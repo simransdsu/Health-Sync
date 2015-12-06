@@ -17,6 +17,7 @@
 		62FBFAF61BEE7D7900C85445 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62FBFAF51BEE7D7900C85445 /* HealthKit.framework */; };
 		62FBFAFC1BEE7DD600C85445 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FBFAFB1BEE7DD600C85445 /* HealthManager.swift */; };
 		62FBFAFE1BEE9BDD00C85445 /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FBFAFD1BEE9BDD00C85445 /* SyncViewController.swift */; };
+		FDD31F7D1C13BE9C0072E64C /* FitBitUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD31F7C1C13BE9C0072E64C /* FitBitUserProfile.swift */; };
 		FDDB552F1C0243E3009C3FA0 /* FitBitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB552E1C0243E3009C3FA0 /* FitBitManager.swift */; };
 		FDDB55311C0246AB009C3FA0 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB55301C0246AB009C3FA0 /* Constant.swift */; };
 		FDDB55331C02474D009C3FA0 /* SyncAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB55321C02474D009C3FA0 /* SyncAllViewController.swift */; };
@@ -38,6 +39,7 @@
 		62FBFAFB1BEE7DD600C85445 /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		62FBFAFD1BEE9BDD00C85445 /* SyncViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
 		6E5B96829E8E6EFD4A3217F6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		FDD31F7C1C13BE9C0072E64C /* FitBitUserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitBitUserProfile.swift; sourceTree = "<group>"; };
 		FDDB552E1C0243E3009C3FA0 /* FitBitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitBitManager.swift; sourceTree = "<group>"; };
 		FDDB55301C0246AB009C3FA0 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		FDDB55321C02474D009C3FA0 /* SyncAllViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncAllViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				62FBFAFB1BEE7DD600C85445 /* HealthManager.swift */,
 				FDDB552E1C0243E3009C3FA0 /* FitBitManager.swift */,
 				FDDB55301C0246AB009C3FA0 /* Constant.swift */,
+				FDD31F7C1C13BE9C0072E64C /* FitBitUserProfile.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -162,7 +165,7 @@
 				TargetAttributes = {
 					6269B8281BD4A4DB008C2803 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = 8J72S889CZ;
+						DevelopmentTeam = WK5JSP27UR;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -263,6 +266,7 @@
 				FDDB552F1C0243E3009C3FA0 /* FitBitManager.swift in Sources */,
 				62FBFAFC1BEE7DD600C85445 /* HealthManager.swift in Sources */,
 				62FBFAFE1BEE9BDD00C85445 /* SyncViewController.swift in Sources */,
+				FDD31F7D1C13BE9C0072E64C /* FitBitUserProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,7 +383,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HealthSync/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ios.CompleteStack.HealthSync;
+				PRODUCT_BUNDLE_IDENTIFIER = HealthSync;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -395,7 +399,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HealthSync/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ios.CompleteStack.HealthSync;
+				PRODUCT_BUNDLE_IDENTIFIER = HealthSync;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
