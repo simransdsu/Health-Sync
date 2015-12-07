@@ -215,6 +215,4 @@ class FitBitManager {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.stringFromDate(NSDate())
     }
-    
-    
 }

@@ -22,11 +22,30 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         loadFitBitProfile()
     }
     
     func loadFitBitProfile(){
         
+        let accessToken = FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken")
+        if accessToken == nil || accessToken!.characters.count == 0 {
+            let secondViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FitbitLoginViewController") as! FitbitLoginViewController
+            secondViewController.delegate = self
+            secondViewController.methodStatus = "getProfileData"
+            self.navigationController?.pushViewController(secondViewController, animated: true)
+        } else {
+            self.getProfileData()
+        }
+        
+        
+        
+    }
+    
+    func getProfileData() {
         fitbitManager.getProfileData({(result)-> Void in
             guard  let fitbitProfile =   result as? FitBitUserProfile else{
                 print("Error in loading user FitBit profile.")
@@ -46,7 +65,6 @@ class ProfileViewController: UIViewController {
                 self.fitbitAvatar.image = UIImage(data: data)
             }
         })
-        
     }
     
 }

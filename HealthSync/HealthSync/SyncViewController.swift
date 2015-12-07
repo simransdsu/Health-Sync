@@ -14,13 +14,6 @@ class SyncViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // For testing purpose uncomment the code below
-/*
-        print("Steps before test addition: \(totalSteps)")
-        totalSteps += 50;
-        print("Steps after dummy addition: \(totalSteps)")
-*/
-        // The code above this should not be commented at any costs if Uncommented.
         
         healthManager.recentSteps({stepMap, error in
             print("Recent Steps: \(stepMap[HealthManager.TOTAL_STEPS_COUNT_AS_DOUBE])")

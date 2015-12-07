@@ -34,9 +34,16 @@ class FitbitLoginViewController: UIViewController {
                 self.loginBackBtn.setTitle("Done", forState: UIControlState.Normal)
             })
         } else {
-            
-            let parentViewController = (self.delegate as! SyncAllViewController)
-            parentViewController.getProfileData();
+
+            if(self.delegate?.isKindOfClass(ProfileViewController) == true) {
+                let parentViewController = (self.delegate as! ProfileViewController)
+                parentViewController.getProfileData()
+            } else if((self.delegate?.isKindOfClass(SyncAllViewController) == true)) {
+                let parentViewController = (self.delegate as! SyncAllViewController)
+                parentViewController.getProfileData()
+            }
+
+        
             self.navigationController?.popViewControllerAnimated(true)
         }
         
@@ -49,12 +56,7 @@ class FitbitLoginViewController: UIViewController {
     }
     
     override func viewDidDisappear(animated: Bool) {
-//        if(self.isMovingFromParentViewController()) {
-//            if(self.methodStatus == "getProfileData") {
-//                let parentViewController = (self.delegate as! SyncAllViewController)
-//                parentViewController.getProfileData();
-//            }
-//        }
+
     }
 
     /*
