@@ -15,9 +15,7 @@ class SyncViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        healthManager.recentSteps({stepMap, error in
-            print("Recent Steps: \(stepMap[HealthManager.TOTAL_STEPS_COUNT_AS_DOUBE])")
-        })
+        print("Steps Walked: \t\t\(self.totalSteps)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,18 +23,52 @@ class SyncViewController: UIViewController {
     }
     
     @IBAction func syncWithHealthKit(sender: AnyObject) {
-        healthManager.recentSteps({stepMap, error in
+         
+        
+        
+    }
+
+    @IBAction func syncWithFitbit(sender: AnyObject) {
+        
+        
+        let accessToken = FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken")
+        if accessToken == nil || accessToken!.characters.count == 0 {
+            let secondViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FitbitLoginViewController") as! FitbitLoginViewController
+            secondViewController.delegate = self
+            secondViewController.methodStatus = "syncAll"
+            self.navigationController?.pushViewController(secondViewController, animated: true)
+        } else {
+            self.syncAll()
+        }
+    }
+    
+    func syncAll() {
+        let fitbitManager = FitBitManager()
+        healthManager.recentSteps({steps, error in
             dispatch_async(dispatch_get_main_queue()) {
-                let healthKitSteps = (stepMap[HealthManager.TOTAL_STEPS_COUNT_AS_DOUBE] as? Int)!
-                if(self.totalSteps == healthKitSteps) {
-                        print("Data Already Synced");
+                if let totalSteps = (steps[HealthManager.TOTAL_STEPS_COUNT_AS_DOUBE] as? Int) {
+                    let healthKitSteps = Int(totalSteps)
+                    fitbitManager.getFitbitSteps({(result)-> Void in
+                        if let fitbitSteps = result {
+                            if(healthKitSteps < fitbitSteps){
+                                let  stepsDifference = (fitbitSteps - healthKitSteps)
+                                self.healthManager.saveSteps(stepsDifference)
+                            }else if(healthKitSteps > fitbitSteps){
+                                let stepsDifference = (healthKitSteps - fitbitSteps)
+                                fitbitManager.syncStepsWithFitbit(stepsDifference)
+                            }
+                        }
+                    })
                 } else {
-                    self.synStepsWithHealthKit(healthKitSteps)
+                    let alert = UIAlertController(title: "Health Kit Disabled", message:"Please enable Health", preferredStyle: .Alert)
+                    self.presentViewController(alert, animated: true){}
                 }
             }
         })
     }
-
+    
+    
+    
     func synStepsWithHealthKit(healthKitSteps: Int) {
         let stepsDifference = self.totalSteps - healthKitSteps;
         if(stepsDifference > 0) {

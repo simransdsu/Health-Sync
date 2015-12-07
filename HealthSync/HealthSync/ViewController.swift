@@ -31,7 +31,6 @@ class ViewController: UIViewController {
                         self.numberOfStepsLabel.text = "Loading previous steps"
                         if let totalSteps = (steps[HealthManager.TOTAL_STEPS_COUNT_AS_DOUBE] as? Int) {
                             self.totalSteps = Int(totalSteps)
-                            print(steps[HealthManager.STEP_RECORD_ARRAY])
                             self.numberOfStepsLabel.text = "\(self.totalSteps)"
                         } else {
                             self.numberOfStepsLabel.text = "0"
@@ -92,7 +91,7 @@ class ViewController: UIViewController {
                 self.pedoMeter.stopPedometerUpdates()
                 
                 let destinationVC = self.storyboard!.instantiateViewControllerWithIdentifier("SyncViewController") as! SyncViewController
-                destinationVC.totalSteps = Int(self.numberOfStepsLabel.text!)!;
+                destinationVC.totalSteps = self.totalSteps;
                 self.navigationController?.pushViewController(destinationVC, animated: true)
             }
         }

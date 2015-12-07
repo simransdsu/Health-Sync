@@ -98,7 +98,7 @@
                                 <animations/>
                                 <color key="backgroundColor" red="0.46945837626454967" green="1" blue="0.76620357603777633" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="CVC-ds-cmD"/>
+                                    <constraint firstAttribute="height" constant="47" id="bAB-MJ-zze"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Sync with HealthKit">
@@ -108,13 +108,29 @@
                                     <action selector="syncWithHealthKit:" destination="xPi-hL-ehy" eventType="touchUpInside" id="Ibp-Ok-tTT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDb-eH-TEH">
+                                <rect key="frame" x="20" y="222" width="560" height="47"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.46945837629999998" green="1" blue="0.766203576" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="Sync with Fitbit">
+                                    <color key="titleColor" red="0.98716695789999998" green="0.93716485709999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="syncWithFitbit:" destination="xPi-hL-ehy" eventType="touchUpInside" id="VsY-tV-Upi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PrY-4g-yNB" firstAttribute="trailing" secondItem="cq2-nO-Q93" secondAttribute="trailingMargin" id="CYK-yk-gpc"/>
-                            <constraint firstItem="PrY-4g-yNB" firstAttribute="leading" secondItem="cq2-nO-Q93" secondAttribute="leadingMargin" id="KvK-kn-CsE"/>
-                            <constraint firstItem="PrY-4g-yNB" firstAttribute="top" secondItem="RuD-GS-AEB" secondAttribute="bottom" constant="59" id="mdQ-U0-89d"/>
+                            <constraint firstItem="PrY-4g-yNB" firstAttribute="trailing" secondItem="oDb-eH-TEH" secondAttribute="trailing" id="CfY-7D-ABj"/>
+                            <constraint firstItem="PrY-4g-yNB" firstAttribute="leading" secondItem="cq2-nO-Q93" secondAttribute="leadingMargin" id="DuI-oy-3JA"/>
+                            <constraint firstItem="PrY-4g-yNB" firstAttribute="top" secondItem="RuD-GS-AEB" secondAttribute="bottom" constant="59" id="Sdu-IX-hUy"/>
+                            <constraint firstItem="oDb-eH-TEH" firstAttribute="top" secondItem="PrY-4g-yNB" secondAttribute="bottom" constant="52" id="akm-F5-s4g"/>
+                            <constraint firstItem="PrY-4g-yNB" firstAttribute="leading" secondItem="oDb-eH-TEH" secondAttribute="leading" id="egj-yZ-0FM"/>
+                            <constraint firstItem="oDb-eH-TEH" firstAttribute="trailing" secondItem="cq2-nO-Q93" secondAttribute="trailingMargin" id="zVj-2q-DqT"/>
+                            <constraint firstItem="Pr1-VR-ckW" firstAttribute="top" secondItem="oDb-eH-TEH" secondAttribute="bottom" constant="282" id="zsA-yb-rZi"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -199,7 +215,7 @@
                                     <constraint firstAttribute="width" constant="175" id="oLQ-tj-9i2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
-                                <state key="normal" title="Fitbit Authorize">
+                                <state key="normal" title="Sync All">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>

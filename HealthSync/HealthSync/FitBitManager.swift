@@ -143,7 +143,7 @@ class FitBitManager {
         }
     }
     
-    func getFitbitSteps(completion:(result:Int)->Void){
+    func getFitbitSteps(completion:(result:Int?)->Void){
         
         let fitbit_activity_steps_url = BASE_RESOURCE_URL+"/activities/steps/date/today/1d.json"
         let header = ["Authorization":"Bearer " + (FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken")! )]
@@ -159,7 +159,7 @@ class FitBitManager {
                 let activityArray = activitySteps as! NSArray
                 let activity = activityArray[0] as! NSDictionary
                 let steps = activity["value"]?.integerValue
-                completion(result:steps!)
+                completion(result:steps)
             }
         }
     }
@@ -177,7 +177,7 @@ class FitBitManager {
         let activityDate = getActivityDate()
         let calories = getCalories(steps)
         
-        parameter[" "] = walking_activity_id
+        parameter["activityId"] = walking_activity_id
         parameter["startTime"] = startTime
         parameter["durationMillis"] = durationMillis
         parameter["date"] = activityDate

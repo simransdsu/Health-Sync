@@ -24,27 +24,33 @@ class SyncAllViewController: UIViewController {
         if accessToken == nil || accessToken!.characters.count == 0 {
             let secondViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FitbitLoginViewController") as! FitbitLoginViewController
             secondViewController.delegate = self
-            secondViewController.methodStatus = "getProfileData"
+            secondViewController.methodStatus = "syncAll"
             self.navigationController?.pushViewController(secondViewController, animated: true)
         } else {
-            self.getProfileData()
+            self.syncAll()
         }
     }
     
-    @IBAction func syncAll(sender: UIButton) {
-        
-        //let healthKitSteps = getStepsFromHealthKit()
-        let healthKitSteps = 15000
-        var fitbitSteps = 0
-        
-        fitbitManager.getFitbitSteps({(result)-> Void in
-            fitbitSteps = result
-            if(healthKitSteps < fitbitSteps){
-                let  stepsDifference = (fitbitSteps - healthKitSteps)
-                self.healthManager?.saveSteps(stepsDifference)
-            }else{
-                let stepsDifference = (healthKitSteps - fitbitSteps)
-                self.fitbitManager.syncStepsWithFitbit(stepsDifference)
+    func syncAll() {
+        healthManager?.recentSteps({steps, error in
+            dispatch_async(dispatch_get_main_queue()) {
+                if let totalSteps = (steps[HealthManager.TOTAL_STEPS_COUNT_AS_DOUBE] as? Int) {
+                    let healthKitSteps = Int(totalSteps)
+                    self.fitbitManager.getFitbitSteps({(result)-> Void in
+                        if let fitbitSteps = result {
+                            if(healthKitSteps < fitbitSteps){
+                                let  stepsDifference = (fitbitSteps - healthKitSteps)
+                                self.healthManager?.saveSteps(stepsDifference)
+                            }else if(healthKitSteps > fitbitSteps){
+                                let stepsDifference = (healthKitSteps - fitbitSteps)
+                                self.fitbitManager.syncStepsWithFitbit(stepsDifference)
+                            }
+                        }
+                    })
+                } else {
+                    let alert = UIAlertController(title: "Health Kit Disabled", message:"Please enable Health", preferredStyle: .Alert)
+                    self.presentViewController(alert, animated: true){}
+                }
             }
         })
     }
@@ -77,6 +83,12 @@ class SyncAllViewController: UIViewController {
     
     
     @IBAction func getProfile(sender: UIButton) {
+        
+        fitbitManager.refereshRequest({(refreshToken, accessToken) -> Void in
+            self.fitbitManager.getFitbitSteps({(result) -> Void in
+                print(result)
+            })
+        })
         
     }
     
