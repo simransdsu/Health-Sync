@@ -20,9 +20,10 @@ class ProfileViewController: UIViewController {
     var profileAvatarUrl = ""
     let fitbitManager:FitBitManager = FitBitManager()
     
+    let activitySpinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -46,9 +47,11 @@ class ProfileViewController: UIViewController {
     }
     
     func getProfileData() {
+        Util.showSpinner(activitySpinner, forView: self)
         fitbitManager.getProfileData({(result)-> Void in
             guard  let fitbitProfile =   result as? FitBitUserProfile else{
-                print("Error in loading user FitBit profile.")
+                Util.stopSpinner(self.activitySpinner)
+                Util.showAlertView("Profile Error", message: "Error in loading profile please try again later ", view: self)
                 return
             }
             
@@ -57,11 +60,13 @@ class ProfileViewController: UIViewController {
             self.genderInfo.text = fitbitProfile.gender
             self.weightInfo.text = String(format:"%f", fitbitProfile.weight)
             self.profileAvatarUrl = fitbitProfile.avatar_url
+            
             print(self.profileAvatarUrl)
             
             if let url  = NSURL(string: self.profileAvatarUrl),
                 data = NSData(contentsOfURL: url)
             {
+                Util.stopSpinner(self.activitySpinner)
                 self.fitbitAvatar.image = UIImage(data: data)
             }
         })

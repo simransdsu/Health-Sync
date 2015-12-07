@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GDt-Kx-8je">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GDt-Kx-8je">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -69,7 +70,7 @@
                             <constraint firstItem="jR7-MJ-mW8" firstAttribute="centerX" secondItem="9N2-eH-05z" secondAttribute="centerX" id="tNR-07-m5X"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="StepCounter" id="ocm-rY-d8t"/>
+                    <tabBarItem key="tabBarItem" title="StepCounter" image="steps" id="ocm-rY-d8t"/>
                     <navigationItem key="navigationItem" title="Health Sync" id="UxM-kE-U8Z"/>
                     <connections>
                         <outlet property="numberOfStepsLabel" destination="9N2-eH-05z" id="faN-MY-Pvu"/>
@@ -278,7 +279,7 @@
                             <constraint firstItem="IS6-do-Vs0" firstAttribute="top" secondItem="PAt-gL-tBJ" secondAttribute="bottom" constant="133" id="t69-pI-Fys"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Sync-All" id="olg-ar-72r"/>
+                    <tabBarItem key="tabBarItem" title="Sync-All" image="sync" id="olg-ar-72r"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZd-G7-yhq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -355,11 +356,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="tb4-pF-CzC">
+                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_profile" translatesAutoresizingMaskIntoConstraints="NO" id="tb4-pF-CzC">
                                 <rect key="frame" x="228" y="110" width="145" height="145"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="145" id="Bnh-fI-shK"/>
+                                    <constraint firstAttribute="height" constant="145" id="YcV-KV-vuG"/>
+                                    <constraint firstAttribute="width" secondItem="tb4-pF-CzC" secondAttribute="height" multiplier="1:1" id="heu-SZ-kuP"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -397,7 +400,7 @@
                             <constraint firstItem="ccm-lS-slL" firstAttribute="leading" secondItem="rGW-6X-Qk2" secondAttribute="trailing" constant="16" id="yir-CH-D0d"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="BDI-cd-SgV"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="BDI-cd-SgV"/>
                     <connections>
                         <outlet property="ageInfo" destination="Abg-CV-Sbf" id="kXJ-tf-U9L"/>
                         <outlet property="fitbitAvatar" destination="tb4-pF-CzC" id="Dkw-fz-lYb"/>
@@ -450,6 +453,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="profile" width="960" height="1280"/>
+        <image name="no_profile" width="512" height="512"/>
+        <image name="profile" width="40" height="40"/>
+        <image name="steps" width="40" height="40"/>
+        <image name="sync" width="40" height="40"/>
     </resources>
 </document>

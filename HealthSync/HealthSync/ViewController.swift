@@ -50,9 +50,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //UIColorSetup
-        navigationController?.navigationBar.barTintColor = themeColor
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         startButton.backgroundColor = themeColor
         
         let cal = NSCalendar.currentCalendar()
