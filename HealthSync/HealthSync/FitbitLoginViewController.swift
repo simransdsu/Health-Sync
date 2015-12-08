@@ -49,16 +49,6 @@ class FitbitLoginViewController: UIViewController {
         
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        
-
-        
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-
-    }
-
     /*
     // MARK: - Navigation
 

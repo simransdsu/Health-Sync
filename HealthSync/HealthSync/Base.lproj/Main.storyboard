@@ -104,25 +104,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PrY-4g-yNB">
-                                <rect key="frame" x="20" y="123" width="560" height="47"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Currently we just support Fitbit. Other services to be added soon." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ODd-YH-JRj">
+                                <rect key="frame" x="20" y="72" width="560" height="142"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.46945837626454967" green="1" blue="0.76620357603777633" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="bAB-MJ-zze"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <state key="normal" title="Sync with HealthKit">
-                                    <color key="titleColor" red="0.98716695787934539" green="0.9371648571410065" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="syncWithHealthKit:" destination="xPi-hL-ehy" eventType="touchUpInside" id="Ibp-Ok-tTT"/>
-                                </connections>
-                            </button>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDb-eH-TEH">
-                                <rect key="frame" x="20" y="222" width="560" height="47"/>
+                                <rect key="frame" x="20" y="232" width="560" height="47"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.46945837629999998" green="1" blue="0.766203576" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="r4B-YS-cLQ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Sync with Fitbit">
                                     <color key="titleColor" red="0.98716695789999998" green="0.93716485709999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -135,19 +130,19 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PrY-4g-yNB" firstAttribute="trailing" secondItem="oDb-eH-TEH" secondAttribute="trailing" id="CfY-7D-ABj"/>
-                            <constraint firstItem="PrY-4g-yNB" firstAttribute="leading" secondItem="cq2-nO-Q93" secondAttribute="leadingMargin" id="DuI-oy-3JA"/>
-                            <constraint firstItem="PrY-4g-yNB" firstAttribute="top" secondItem="RuD-GS-AEB" secondAttribute="bottom" constant="59" id="Sdu-IX-hUy"/>
-                            <constraint firstItem="oDb-eH-TEH" firstAttribute="top" secondItem="PrY-4g-yNB" secondAttribute="bottom" constant="52" id="akm-F5-s4g"/>
-                            <constraint firstItem="PrY-4g-yNB" firstAttribute="leading" secondItem="oDb-eH-TEH" secondAttribute="leading" id="egj-yZ-0FM"/>
-                            <constraint firstItem="oDb-eH-TEH" firstAttribute="trailing" secondItem="cq2-nO-Q93" secondAttribute="trailingMargin" id="zVj-2q-DqT"/>
-                            <constraint firstItem="Pr1-VR-ckW" firstAttribute="top" secondItem="oDb-eH-TEH" secondAttribute="bottom" constant="282" id="zsA-yb-rZi"/>
+                            <constraint firstItem="oDb-eH-TEH" firstAttribute="top" secondItem="ODd-YH-JRj" secondAttribute="bottom" constant="18" id="6cZ-nE-fGQ"/>
+                            <constraint firstItem="ODd-YH-JRj" firstAttribute="top" secondItem="RuD-GS-AEB" secondAttribute="bottom" constant="8" symbolic="YES" id="7b5-6i-aoM"/>
+                            <constraint firstItem="ODd-YH-JRj" firstAttribute="trailing" secondItem="cq2-nO-Q93" secondAttribute="trailingMargin" id="JgZ-p4-56L"/>
+                            <constraint firstItem="ODd-YH-JRj" firstAttribute="leading" secondItem="cq2-nO-Q93" secondAttribute="leadingMargin" id="NlH-ou-q9p"/>
+                            <constraint firstItem="ODd-YH-JRj" firstAttribute="leading" secondItem="oDb-eH-TEH" secondAttribute="leading" id="as4-3s-bV4"/>
+                            <constraint firstItem="Pr1-VR-ckW" firstAttribute="top" secondItem="oDb-eH-TEH" secondAttribute="bottom" constant="272" id="d5Z-og-q6l"/>
+                            <constraint firstItem="ODd-YH-JRj" firstAttribute="trailing" secondItem="oDb-eH-TEH" secondAttribute="trailing" id="lwS-sp-mcw"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0q-xE-9BJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2167" y="-836"/>
+            <point key="canvasLocation" x="2161" y="-873"/>
         </scene>
         <!--Fitbit Login View Controller-->
         <scene sceneID="qHQ-lo-xFq">
@@ -218,82 +213,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAt-gL-tBJ">
-                                <rect key="frame" x="20" y="360" width="175" height="58"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.56535404619999996" green="0.88616635099999996" blue="0.69191580620000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="175" id="oLQ-tj-9i2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
-                                <state key="normal" title="Sync All">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="doFitbitAuth:" destination="a31-wF-Pbt" eventType="touchUpInside" id="6qg-7F-cKt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pw-it-o8X">
-                                <rect key="frame" x="20" y="260" width="560" height="60"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.56535404619999996" green="0.88616635099999996" blue="0.69191580620000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="xvZ-Po-hgi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
-                                <state key="normal" title="Sync Healthkit and Fitbit">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="syncAll:" destination="a31-wF-Pbt" eventType="touchUpInside" id="rGz-fD-t4i"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="You can sync your steps between your Fitbit Device and Health app.  There still might be some inconsistancies. " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cio-5p-KQh">
-                                <rect key="frame" x="20" y="72" width="560" height="180"/>
+                                <rect key="frame" x="20" y="72" width="560" height="128"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1S9-bx-9du">
-                                <rect key="frame" x="405" y="361" width="175" height="57"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pw-it-o8X">
+                                <rect key="frame" x="20" y="208" width="560" height="60"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.56535404619999996" green="0.88616635099999996" blue="0.69191580620000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="I0q-oC-OHC"/>
-                                    <constraint firstAttribute="width" constant="175" id="WMT-e7-Ouu"/>
+                                    <constraint firstAttribute="height" constant="60" id="UOz-nw-hj0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
-                                <state key="normal" title="Get Profile">
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <state key="normal" title="Sync Healthkit And Fitbit">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="getProfile:" destination="a31-wF-Pbt" eventType="touchUpInside" id="krA-FG-YxE"/>
+                                    <action selector="doFitbitAuth:" destination="a31-wF-Pbt" eventType="touchUpInside" id="uym-St-YOa"/>
                                 </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PAt-gL-tBJ" firstAttribute="bottom" secondItem="1S9-bx-9du" secondAttribute="bottom" id="9tt-Ud-fLl"/>
-                            <constraint firstItem="PAt-gL-tBJ" firstAttribute="top" secondItem="5pw-it-o8X" secondAttribute="bottom" constant="40" id="DUS-a9-Om8"/>
-                            <constraint firstItem="1S9-bx-9du" firstAttribute="trailing" secondItem="nRZ-Yn-m88" secondAttribute="trailingMargin" id="FX7-2L-ODL"/>
-                            <constraint firstItem="PAt-gL-tBJ" firstAttribute="leading" secondItem="5pw-it-o8X" secondAttribute="leading" id="JWV-ls-Pdt"/>
-                            <constraint firstItem="5pw-it-o8X" firstAttribute="leading" secondItem="cio-5p-KQh" secondAttribute="leading" id="RQp-d2-kXf"/>
-                            <constraint firstItem="cio-5p-KQh" firstAttribute="trailing" secondItem="5pw-it-o8X" secondAttribute="trailing" id="RTs-2i-BEo"/>
-                            <constraint firstItem="PAt-gL-tBJ" firstAttribute="centerY" secondItem="1S9-bx-9du" secondAttribute="centerY" id="RoL-ef-sh0"/>
-                            <constraint firstItem="cio-5p-KQh" firstAttribute="top" secondItem="XiY-GS-Io3" secondAttribute="bottom" constant="8" symbolic="YES" id="WfT-oP-wFG"/>
-                            <constraint firstItem="5pw-it-o8X" firstAttribute="trailing" secondItem="1S9-bx-9du" secondAttribute="trailing" id="aln-Yg-rPv"/>
-                            <constraint firstItem="PAt-gL-tBJ" firstAttribute="leading" secondItem="nRZ-Yn-m88" secondAttribute="leadingMargin" id="ixP-U4-wwy"/>
-                            <constraint firstItem="5pw-it-o8X" firstAttribute="top" secondItem="cio-5p-KQh" secondAttribute="bottom" constant="8" symbolic="YES" id="k0F-Ee-G9f"/>
-                            <constraint firstItem="IS6-do-Vs0" firstAttribute="top" secondItem="PAt-gL-tBJ" secondAttribute="bottom" constant="133" id="t69-pI-Fys"/>
+                            <constraint firstItem="cio-5p-KQh" firstAttribute="leading" secondItem="nRZ-Yn-m88" secondAttribute="leadingMargin" id="KOo-0Z-jBg"/>
+                            <constraint firstItem="cio-5p-KQh" firstAttribute="trailing" secondItem="nRZ-Yn-m88" secondAttribute="trailingMargin" id="UdI-dN-PbT"/>
+                            <constraint firstItem="IS6-do-Vs0" firstAttribute="top" secondItem="5pw-it-o8X" secondAttribute="bottom" constant="283" id="bgN-kP-vMT"/>
+                            <constraint firstItem="5pw-it-o8X" firstAttribute="top" secondItem="cio-5p-KQh" secondAttribute="bottom" constant="8" symbolic="YES" id="je2-2F-EBD"/>
+                            <constraint firstItem="cio-5p-KQh" firstAttribute="leading" secondItem="5pw-it-o8X" secondAttribute="leading" id="lUL-dI-XvR"/>
+                            <constraint firstItem="cio-5p-KQh" firstAttribute="top" secondItem="XiY-GS-Io3" secondAttribute="bottom" constant="8" symbolic="YES" id="m5W-Zc-tzA"/>
+                            <constraint firstItem="cio-5p-KQh" firstAttribute="trailing" secondItem="5pw-it-o8X" secondAttribute="trailing" id="yej-Oc-vQj"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sync-All" image="sync" id="olg-ar-72r"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZd-G7-yhq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1307" y="-26"/>
+            <point key="canvasLocation" x="1407" y="1"/>
         </scene>
         <!--Profile-->
         <scene sceneID="2mO-zA-JHt">
