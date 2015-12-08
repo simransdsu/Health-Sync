@@ -40,7 +40,7 @@ class FitbitLoginViewController: UIViewController {
                 parentViewController.getProfileData()
             } else if((self.delegate?.isKindOfClass(SyncAllViewController) == true)) {
                 let parentViewController = (self.delegate as! SyncAllViewController)
-                parentViewController.getProfileData()
+                parentViewController.syncAll()
             }
 
         
@@ -49,16 +49,6 @@ class FitbitLoginViewController: UIViewController {
         
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        
-
-        
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-
-    }
-
     /*
     // MARK: - Navigation
 

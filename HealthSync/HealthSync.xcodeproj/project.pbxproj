@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1B5F35144653D3BBF661DF54 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27218DCDDC812EA2923256F8 /* Pods.framework */; };
+		6227589E1C169BF200B8F42B /* HealthKitToFitbitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6227589D1C169BF200B8F42B /* HealthKitToFitbitViewController.swift */; };
+		622758A01C169BFF00B8F42B /* FitbitToHealthKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6227589F1C169BFF00B8F42B /* FitbitToHealthKitViewController.swift */; };
 		6239F9A01BE1AD7C00E0D396 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239F99F1BE1AD7C00E0D396 /* NavigationController.swift */; };
 		6269B82D1BD4A4DB008C2803 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6269B82C1BD4A4DB008C2803 /* AppDelegate.swift */; };
 		6269B82F1BD4A4DB008C2803 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6269B82E1BD4A4DB008C2803 /* ViewController.swift */; };
@@ -19,6 +21,8 @@
 		62FBFAFC1BEE7DD600C85445 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FBFAFB1BEE7DD600C85445 /* HealthManager.swift */; };
 		62FBFAFE1BEE9BDD00C85445 /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FBFAFD1BEE9BDD00C85445 /* SyncViewController.swift */; };
 		FD28B15E1C14D4500026F439 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD28B15D1C14D4500026F439 /* ProfileViewController.swift */; };
+		FD28B1631C152D180026F439 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD28B1611C152D180026F439 /* Reach.swift */; };
+		FD28B1641C152D180026F439 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD28B1621C152D180026F439 /* Util.swift */; };
 		FDD31F7D1C13BE9C0072E64C /* FitBitUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD31F7C1C13BE9C0072E64C /* FitBitUserProfile.swift */; };
 		FDDB552F1C0243E3009C3FA0 /* FitBitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB552E1C0243E3009C3FA0 /* FitBitManager.swift */; };
 		FDDB55311C0246AB009C3FA0 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB55301C0246AB009C3FA0 /* Constant.swift */; };
@@ -28,6 +32,8 @@
 /* Begin PBXFileReference section */
 		27218DCDDC812EA2923256F8 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		374F0AE94676B0B8F69AD3A5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		6227589D1C169BF200B8F42B /* HealthKitToFitbitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitToFitbitViewController.swift; sourceTree = "<group>"; };
+		6227589F1C169BFF00B8F42B /* FitbitToHealthKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitbitToHealthKitViewController.swift; sourceTree = "<group>"; };
 		6239F99F1BE1AD7C00E0D396 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		6269B8291BD4A4DB008C2803 /* HealthSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6269B82C1BD4A4DB008C2803 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +49,8 @@
 		62FBFAFD1BEE9BDD00C85445 /* SyncViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
 		6E5B96829E8E6EFD4A3217F6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		FD28B15D1C14D4500026F439 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		FD28B1611C152D180026F439 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
+		FD28B1621C152D180026F439 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		FDD31F7C1C13BE9C0072E64C /* FitBitUserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitBitUserProfile.swift; sourceTree = "<group>"; };
 		FDDB552E1C0243E3009C3FA0 /* FitBitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitBitManager.swift; sourceTree = "<group>"; };
 		FDDB55301C0246AB009C3FA0 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -84,6 +92,7 @@
 		6269B82B1BD4A4DB008C2803 /* HealthSync */ = {
 			isa = PBXGroup;
 			children = (
+				FD28B1601C152C8E0026F439 /* Utils */,
 				6269B82C1BD4A4DB008C2803 /* AppDelegate.swift */,
 				6269B8381BD4A4DB008C2803 /* Info.plist */,
 				62FBFAF91BEE7DB900C85445 /* Models */,
@@ -105,6 +114,8 @@
 				FDDB55321C02474D009C3FA0 /* SyncAllViewController.swift */,
 				628FA95E1C14C7720072B656 /* FitbitLoginViewController.swift */,
 				FD28B15D1C14D4500026F439 /* ProfileViewController.swift */,
+				6227589D1C169BF200B8F42B /* HealthKitToFitbitViewController.swift */,
+				6227589F1C169BFF00B8F42B /* FitbitToHealthKitViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -135,6 +146,15 @@
 				27218DCDDC812EA2923256F8 /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FD28B1601C152C8E0026F439 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FD28B1611C152D180026F439 /* Reach.swift */,
+				FD28B1621C152D180026F439 /* Util.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,12 +284,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				622758A01C169BFF00B8F42B /* FitbitToHealthKitViewController.swift in Sources */,
 				628FA95F1C14C7720072B656 /* FitbitLoginViewController.swift in Sources */,
+				FD28B1631C152D180026F439 /* Reach.swift in Sources */,
+				6227589E1C169BF200B8F42B /* HealthKitToFitbitViewController.swift in Sources */,
 				FDDB55311C0246AB009C3FA0 /* Constant.swift in Sources */,
 				6269B82F1BD4A4DB008C2803 /* ViewController.swift in Sources */,
 				FD28B15E1C14D4500026F439 /* ProfileViewController.swift in Sources */,
 				6239F9A01BE1AD7C00E0D396 /* NavigationController.swift in Sources */,
 				FDDB55331C02474D009C3FA0 /* SyncAllViewController.swift in Sources */,
+				FD28B1641C152D180026F439 /* Util.swift in Sources */,
 				6269B82D1BD4A4DB008C2803 /* AppDelegate.swift in Sources */,
 				FDDB552F1C0243E3009C3FA0 /* FitBitManager.swift in Sources */,
 				62FBFAFC1BEE7DD600C85445 /* HealthManager.swift in Sources */,

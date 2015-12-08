@@ -26,18 +26,7 @@ class ViewController: UIViewController {
         
         healthManager?.authorizeHealthKit { (authorized,  error) -> Void in
             if authorized {
-                self.healthManager?.recentSteps({steps, error in
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.numberOfStepsLabel.text = "Loading previous steps"
-                        if let totalSteps = (steps[HealthManager.TOTAL_STEPS_COUNT_AS_DOUBE] as? Int) {
-                            self.totalSteps = Int(totalSteps)
-                            print(steps[HealthManager.STEP_RECORD_ARRAY])
-                            self.numberOfStepsLabel.text = "\(self.totalSteps)"
-                        } else {
-                            self.numberOfStepsLabel.text = "0"
-                        }
-                    }
-                })
+                
             }
             else
             {
@@ -51,9 +40,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //UIColorSetup
-        navigationController?.navigationBar.barTintColor = themeColor
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         startButton.backgroundColor = themeColor
         
         let cal = NSCalendar.currentCalendar()
@@ -78,7 +64,7 @@ class ViewController: UIViewController {
                     if error != nil {
                         print("There was an error obtaining pedometer data: \(error)")
                     } else {
-                        self.totalSteps += Int(data!.numberOfSteps)
+                        self.totalSteps = Int(data!.numberOfSteps)
                         dispatch_async(dispatch_get_main_queue()) {
                             self.numberOfStepsLabel.text = "\(self.totalSteps)"
                             //self.distanceLabel.text = "\(self.lengthFormatter.stringFromMeters(data.distance as! Double))"
@@ -90,10 +76,46 @@ class ViewController: UIViewController {
                 startButton.setTitle("Start", forState: UIControlState.Normal)
                 startButton.backgroundColor = themeColor
                 self.pedoMeter.stopPedometerUpdates()
+                if(self.totalSteps != 0) {
+                    let alertController = UIAlertController(
+                        title: "Sync",
+                        message: "Do you want to sync your steps with other devices as well ?",
+                        preferredStyle: UIAlertControllerStyle.Alert
+                    )
+                    
+                    let confirmAction = UIAlertAction(
+                        title: "YES", style: UIAlertActionStyle.Default) { (action) in
+                            let destinationVC = self.storyboard!.instantiateViewControllerWithIdentifier("SyncViewController") as! SyncViewController
+                            destinationVC.totalSteps = self.totalSteps;
+                            self.navigationController?.pushViewController(destinationVC, animated: true)
+                    }
+                    
+                    let cancelAction = UIAlertAction(
+                        title: "NO",
+                        style: UIAlertActionStyle.Destructive) { (action) in
+                    }
+                    alertController.addAction(confirmAction)
+                    alertController.addAction(cancelAction)
+                    
+                    presentViewController(alertController, animated: true, completion: nil)
+                }
                 
-                let destinationVC = self.storyboard!.instantiateViewControllerWithIdentifier("SyncViewController") as! SyncViewController
-                destinationVC.totalSteps = Int(self.numberOfStepsLabel.text!)!;
-                self.navigationController?.pushViewController(destinationVC, animated: true)
+                else {
+                    let alertController = UIAlertController(
+                        title: "You need to walk first.",
+                        message: "😳",
+                        preferredStyle: UIAlertControllerStyle.Alert
+                    )
+                    
+                    let confirmAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action) in
+                            
+                    }
+                    
+                    alertController.addAction(confirmAction)
+                    
+                    presentViewController(alertController, animated: true, completion: nil)
+                }
+                
             }
         }
     }
