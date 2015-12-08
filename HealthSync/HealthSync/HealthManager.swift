@@ -77,6 +77,7 @@ class HealthManager {
                 var stepRecords:Array<Double> = Array<Double>();
                 for result in results as! [HKQuantitySample]
                 {
+                    print("\(result.quantity)")
                     stepRecords.append(result.quantity.doubleValueForUnit(HKUnit.countUnit()))
                     steps += result.quantity.doubleValueForUnit(HKUnit.countUnit())
                 }

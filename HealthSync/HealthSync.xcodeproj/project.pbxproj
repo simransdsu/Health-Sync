@@ -185,7 +185,7 @@
 				TargetAttributes = {
 					6269B8281BD4A4DB008C2803 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = WK5JSP27UR;
+						DevelopmentTeam = 8J72S889CZ;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -407,7 +407,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HealthSync/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HealthSync;
+				PRODUCT_BUNDLE_IDENTIFIER = com.completestack.HealthSync;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -423,7 +423,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HealthSync/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HealthSync;
+				PRODUCT_BUNDLE_IDENTIFIER = com.completestack.HealthSync;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
