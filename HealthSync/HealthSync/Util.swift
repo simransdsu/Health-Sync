@@ -21,7 +21,6 @@ class Util {
         view.presentViewController(alert, animated: true, completion: nil)
     }
     
-    
     static func isConnectedToNetwork() -> Bool {
         Reach().monitorReachabilityChanges()
         let status = Reach().connectionStatus()

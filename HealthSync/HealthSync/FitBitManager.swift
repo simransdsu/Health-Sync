@@ -37,9 +37,13 @@ class FitBitManager {
                 print(error.localizedDescription)
         })
         completion(result: "doFitBitOAuth")
+        
     }
     
-    func getAuthInformation(url: NSURL, completion:(result: AnyObject) -> Void) {
+    func getAuthInformation(url: NSURL, completion:() -> Void) {
+        
+        let clientID = FitBitCredentials.sharedInstance.fitBitValueForKey("clientID")
+        let code = (url.query!).characters.split{$0 == "="}.map(String.init)
         
         var parameter = Dictionary<String, AnyObject>()
         var headers = Dictionary<String, String>()
@@ -48,18 +52,14 @@ class FitBitManager {
         headers["Content-Type"] = "application/x-www-form-urlencoded"
         
         parameter["grant_type"] = "authorization_code"
-        parameter["client_id"] = "229R6V"
+        parameter["client_id"] = clientID
         parameter["redirect_uri"] = "healthsync://oauth"
-        let code = (url.query!).characters.split{$0 == "="}.map(String.init)
         parameter["code"] = code[1]
         
-        let urlstring =  "https://api.fitbit.com/oauth2/token?";
+        let fitbit_token_url =  "https://api.fitbit.com/oauth2/token?";
         
-        Alamofire.request(.POST, urlstring,parameters: parameter, headers:headers).responseJSON{ response in
+        Alamofire.request(.POST, fitbit_token_url,parameters: parameter, headers:headers).responseJSON{ response in
             guard response.result.error == nil else {
-                // got an error in getting the data, need to handle it
-                print("error calling GET on /posts/1")
-                print(response.result.error!)
                 return
             }
             
@@ -70,12 +70,10 @@ class FitBitManager {
                     FitBitCredentials.sharedInstance.setFitbitValue(String(jsonObject["expires_in"]!), withKey: "expiresIn")
                     let refreshToken = String(jsonObject["refresh_token"]!)
                     FitBitCredentials.sharedInstance.setFitbitValue(refreshToken, withKey: "refreshToken")
-                    
-                    completion(result: "getAuthInformation")
                 }
             }
         }
-
+        
     }
     
     func getProfileData(completion:(result:AnyObject?)->Void) {
@@ -96,7 +94,7 @@ class FitBitManager {
                     let user = jsonObject["user"]!
                     
                     let age  = user["age"]!?.integerValue
-                    let avatar_url = (user["avatar"]! as! String)
+                    let avatar_url = (user["avatar150"]! as! String)
                     let fullName = (user["fullName"]! as! String)
                     let gender = (user["gender"]! as! String)
                     let height = user["height"]!?.doubleValue

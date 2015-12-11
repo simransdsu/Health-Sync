@@ -41,7 +41,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startButton.backgroundColor = themeColor
-        
+        startButton.layer.borderColor = UIColor.blackColor().CGColor
+        startButton.layer.cornerRadius = 5
+        startButton.layer.borderWidth = 0.5
         let cal = NSCalendar.currentCalendar()
         let comps = cal.components(NSCalendarUnit.Year , fromDate: NSDate())
         comps.hour = 0
@@ -99,21 +101,9 @@ class ViewController: UIViewController {
                     
                     presentViewController(alertController, animated: true, completion: nil)
                 }
-                
+                    
                 else {
-                    let alertController = UIAlertController(
-                        title: "You need to walk first.",
-                        message: "😳",
-                        preferredStyle: UIAlertControllerStyle.Alert
-                    )
-                    
-                    let confirmAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action) in
-                            
-                    }
-                    
-                    alertController.addAction(confirmAction)
-                    
-                    presentViewController(alertController, animated: true, completion: nil)
+                    Util.showAlertView("🚶OOPS!🚶", message: "You need to walk first.", view: self)
                 }
                 
             }

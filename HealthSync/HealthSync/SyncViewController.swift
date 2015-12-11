@@ -11,23 +11,23 @@ import UIKit
 class SyncViewController: UIViewController {
     var totalSteps: Int = 0
     let healthManager = HealthManager()
-
+    
+    @IBOutlet weak var syncButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Steps Walked: \t\t\(self.totalSteps)")
+        syncButton.layer.borderWidth = 0.5
+        syncButton.layer.borderColor = UIColor.grayColor().CGColor
+        syncButton.layer.cornerRadius = 10
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func syncWithHealthKit(sender: AnyObject) {
-         
-        
-        
-    }
-
+    
     @IBAction func syncWithFitbit(sender: AnyObject) {
         
         
@@ -43,51 +43,25 @@ class SyncViewController: UIViewController {
     }
     
     func syncAll() {
+        
+        guard Util.isConnectedToNetwork() else{
+            Util.showAlertView("No Internet Access", message: "Please connect to Internet and try again ", view: self)
+            return
+        }
+        
         let fitbitManager = FitBitManager()
         fitbitManager.syncStepsWithFitbit(totalSteps)
-        
-//        let fitbitManager = FitBitManager()
-//        healthManager.recentSteps({steps, error in
-//            dispatch_async(dispatch_get_main_queue()) {
-//                if let totalSteps = (steps[HealthManager.TOTAL_STEPS_COUNT_AS_DOUBE] as? Int) {
-//                    let healthKitSteps = Int(totalSteps)
-//                    fitbitManager.getFitbitSteps({(result)-> Void in
-//                        if let fitbitSteps = result {
-//                            if(healthKitSteps < fitbitSteps){
-//                                let  stepsDifference = (fitbitSteps - healthKitSteps)
-//                                self.healthManager.saveSteps(stepsDifference)
-//                            }else if(healthKitSteps > fitbitSteps){
-//                                let stepsDifference = (healthKitSteps - fitbitSteps)
-//                                fitbitManager.syncStepsWithFitbit(stepsDifference)
-//                            }
-//                        }
-//                    })
-//                } else {
-//                    let alert = UIAlertController(title: "Health Kit Disabled", message:"Please enable Health", preferredStyle: .Alert)
-//                    self.presentViewController(alert, animated: true){}
-//                }
-//            }
-//        })
     }
     
     
-    
-    func synStepsWithHealthKit(healthKitSteps: Int) {
-        let stepsDifference = self.totalSteps - healthKitSteps;
-        if(stepsDifference > 0) {
-            self.healthManager.saveSteps(stepsDifference)
-        }
-        print("Steps Difference is: \(stepsDifference)")
-    }
-
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
