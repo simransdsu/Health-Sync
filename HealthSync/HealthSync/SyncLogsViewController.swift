@@ -17,11 +17,11 @@ class SyncLogsViewController: UITableViewController {
     let clearLogButton   = UIButton(type: UIButtonType.Custom) as UIButton
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Sync Logs"
     }
     
     override func viewWillAppear(animated: Bool) {
         loadAllSyncLogs()
+        self.navigationController!.navigationBar.topItem!.title = "Sync Logs"
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

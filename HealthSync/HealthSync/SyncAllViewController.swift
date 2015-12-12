@@ -18,13 +18,17 @@ class SyncAllViewController: UIViewController {
     
     @IBOutlet weak var syncAllButton: UIButton!
     let activitySpinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         syncAllButton.layer.borderWidth = 0.5
         syncAllButton.layer.borderColor = UIColor.grayColor().CGColor
         syncAllButton.layer.cornerRadius = 10
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController!.navigationBar.topItem!.title = "Sync All"
     }
     
     

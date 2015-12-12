@@ -9,10 +9,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Health Sync-->
+        <!--Step Counter-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HealthSync" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Step Counter" id="BYZ-38-t0r" customClass="ViewController" customModule="HealthSync" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -77,7 +77,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="StepCounter" image="steps" id="ocm-rY-d8t"/>
-                    <navigationItem key="navigationItem" title="Health Sync" id="UxM-kE-U8Z"/>
+                    <navigationItem key="navigationItem" id="UxM-kE-U8Z"/>
                     <connections>
                         <outlet property="numberOfStepsLabel" destination="9N2-eH-05z" id="faN-MY-Pvu"/>
                         <outlet property="startButton" destination="Ybh-HY-hgn" id="phm-jj-G7W"/>
@@ -140,10 +140,10 @@
             </objects>
             <point key="canvasLocation" x="2161" y="-873"/>
         </scene>
-        <!--Item-->
+        <!--Sync logs-->
         <scene sceneID="TLl-iN-faW">
             <objects>
-                <tableViewController id="94n-Dz-d1N" customClass="SyncLogsViewController" customModule="HealthSync" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Sync logs" id="94n-Dz-d1N" customClass="SyncLogsViewController" customModule="HealthSync" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="B1E-sE-DaN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -189,10 +189,10 @@
             </objects>
             <point key="canvasLocation" x="2024" y="371"/>
         </scene>
-        <!--Fitbit Login View Controller-->
+        <!--Fitbit Login-->
         <scene sceneID="qHQ-lo-xFq">
             <objects>
-                <viewController restorationIdentifier="FitbitLoginViewController" storyboardIdentifier="FitbitLoginViewController" id="RaW-aq-ef2" customClass="FitbitLoginViewController" customModule="HealthSync" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="FitbitLoginViewController" storyboardIdentifier="FitbitLoginViewController" title="Fitbit Login" id="RaW-aq-ef2" customClass="FitbitLoginViewController" customModule="HealthSync" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="74e-qV-YI9"/>
                         <viewControllerLayoutGuide type="bottom" id="ALP-En-xSf"/>
@@ -260,10 +260,10 @@
             </objects>
             <point key="canvasLocation" x="364" y="-14"/>
         </scene>
-        <!--Sync-All-->
+        <!--Sync All-->
         <scene sceneID="3mA-LZ-cWS">
             <objects>
-                <viewController id="a31-wF-Pbt" customClass="SyncAllViewController" customModule="HealthSync" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Sync All" id="a31-wF-Pbt" customClass="SyncAllViewController" customModule="HealthSync" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XiY-GS-Io3"/>
                         <viewControllerLayoutGuide type="bottom" id="IS6-do-Vs0"/>
@@ -318,7 +318,7 @@
         <!--Profile-->
         <scene sceneID="2mO-zA-JHt">
             <objects>
-                <viewController id="Vf1-ms-vbr" customClass="ProfileViewController" customModule="HealthSync" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Profile" id="Vf1-ms-vbr" customClass="ProfileViewController" customModule="HealthSync" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5jS-1k-OR3"/>
                         <viewControllerLayoutGuide type="bottom" id="4NI-Cm-eCJ"/>

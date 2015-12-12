@@ -36,6 +36,7 @@ class ViewController: UIViewController {
                 }
             }
         }
+        self.navigationController!.navigationBar.topItem!.title = "Step Counter"
     }
     
     override func viewDidLoad() {
@@ -51,9 +52,6 @@ class ViewController: UIViewController {
         comps.second = 0
         let timeZone = NSTimeZone.systemTimeZone()
         cal.timeZone = timeZone
-        
-        //let midnightOfToday = cal.dateFromComponents(comps)!
-        
     }
     @IBAction func startStepTrackingAction(sender: AnyObject) {
         if(CMMotionActivityManager.isActivityAvailable()) {

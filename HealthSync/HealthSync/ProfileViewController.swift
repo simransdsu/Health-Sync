@@ -23,10 +23,12 @@ class ProfileViewController: UIViewController {
     let activitySpinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.navigationController!.navigationBar.topItem!.title = "Profile"
         loadFitBitProfile()
     }
     
