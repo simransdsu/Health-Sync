@@ -43,10 +43,10 @@ class SyncAllViewController: UIViewController {
     
     func syncAll() {
         
-        Util.showSpinner(activitySpinner, forView: self)
-        guard Util.isConnectedToNetwork() else{
-            Util.showAlertView("No Internet Access", message: "Please Connect to Internet and then try again", view: self)
-            Util.stopSpinner(activitySpinner)
+        showSpinner(activitySpinner, forView: self)
+        guard isConnectedToNetwork() else{
+            showAlertView("No Internet Access", message: "Please Connect to Internet and then try again", view: self)
+            stopSpinner(activitySpinner)
             return
         }
         
@@ -58,12 +58,12 @@ class SyncAllViewController: UIViewController {
                         if let fitbitSteps = result {
                             self.syncSteps(fitbitSteps, healthKitSteps: healthKitSteps)
                         }
-                        Util.stopSpinner(self.activitySpinner)
-                        Util.showAlertView("Congrats", message: "Your data sync is complete", view: self)
+                        stopSpinner(self.activitySpinner)
+                        showAlertView("Congrats", message: "Your data sync is complete", view: self)
                     })
                 } else {
-                    Util.stopSpinner(self.activitySpinner)
-                    Util.showAlertView("Sync Error", message: "Please try again", view: self)
+                    stopSpinner(self.activitySpinner)
+                    showAlertView("Sync Error", message: "Please try again", view: self)
                 }
             }
         })
@@ -73,7 +73,7 @@ class SyncAllViewController: UIViewController {
     func syncSteps(fitbitSteps:Int , healthKitSteps:Int){
         
         guard healthKitSteps != fitbitSteps else {
-            Util.showAlertView("Data Synced", message: "Your data is already synced.", view: self)
+            showAlertView("Data Synced", message: "Your data is already synced.", view: self)
             return
         }
         if(healthKitSteps < fitbitSteps){
@@ -81,7 +81,7 @@ class SyncAllViewController: UIViewController {
             self.healthManager?.saveSteps(stepsDifference)
         }else {
             let stepsDifference = (healthKitSteps - fitbitSteps)
-            self.fitbitManager.syncStepsWithFitbit(stepsDifference)
+            self.fitbitManager.syncStepsWithFitbit(stepsDifference,syncSource:"HTOF")
         }
         
     }

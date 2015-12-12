@@ -30,13 +30,13 @@ class FitbitLoginViewController: UIViewController {
     @IBAction func loginWithFitbit(sender: AnyObject) {
         
         if (self.loginBackBtn.titleLabel?.text == "Login With Fitbit") {
-            if(Util.isConnectedToNetwork()){
+            if(isConnectedToNetwork()){
                 let fbManager = FitBitManager()
                 fbManager.doFitBitOAuth({(result) -> Void in
                     self.loginBackBtn.setTitle("Done", forState: UIControlState.Normal)
                 })
             }else{
-                Util.showAlertView("No Internet Access", message: "Please Connect to Internet and try again later.", view: self)
+                showAlertView("No Internet Access", message: "Please Connect to Internet and try again later.", view: self)
             }
         } else {
             

@@ -103,7 +103,7 @@ class ViewController: UIViewController {
                 }
                     
                 else {
-                    Util.showAlertView("🚶OOPS!🚶", message: "You need to walk first.", view: self)
+                    showAlertView("🚶OOPS!🚶", message: "You need to walk first.", view: self)
                 }
                 
             }

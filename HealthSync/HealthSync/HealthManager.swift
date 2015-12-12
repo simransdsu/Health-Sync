@@ -102,9 +102,18 @@ class HealthManager {
             if(error != nil) {
                 print("Error Saving Data \(error)")
             } else {
+                let logger = SyncLogger.sharedInstance
+                logger.storeSyncLogs("FTOH", steps: numberOfStepsToSave)
                 print("Data Saved")
             }
 
         })
     }
+    
+    private func getActivityDate()->String{
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return dateFormatter.stringFromDate(NSDate())
+    }
+    
 }

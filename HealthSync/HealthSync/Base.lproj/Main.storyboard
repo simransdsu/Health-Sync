@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GDt-Kx-8je">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GDt-Kx-8je">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -22,7 +23,6 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your current Steps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jR7-MJ-mW8">
                                 <rect key="frame" x="138" y="72" width="325" height="45"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="JMt-ax-jPY"/>
                                     <constraint firstAttribute="width" constant="325" id="mL4-n2-WTR"/>
@@ -33,7 +33,6 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9N2-eH-05z">
                                 <rect key="frame" x="175" y="328" width="250" height="69"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="JW2-g1-Vqv"/>
                                     <constraint firstAttribute="height" constant="69" id="xXs-ys-28c"/>
@@ -44,14 +43,12 @@
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="run" translatesAutoresizingMaskIntoConstraints="NO" id="yuA-5K-5fy">
                                 <rect key="frame" x="189" y="125" width="222" height="189"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="222" id="6fJ-eV-3bl"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybh-HY-hgn">
                                 <rect key="frame" x="232" y="405" width="137" height="51"/>
-                                <animations/>
                                 <color key="backgroundColor" red="0.39997668260000002" green="0.79578173559999998" blue="0.77915904469999997" alpha="0.75024245690000002" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="Sw7-GM-0rf"/>
@@ -66,7 +63,6 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jR7-MJ-mW8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="EGt-xy-TO4"/>
@@ -106,18 +102,16 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Currently we just support Fitbit. Other services to be added soon." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ODd-YH-JRj">
                                 <rect key="frame" x="20" y="72" width="560" height="142"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDb-eH-TEH">
-                                <rect key="frame" x="205" y="222" width="190" height="25"/>
-                                <animations/>
+                                <rect key="frame" x="205" y="222" width="190" height="30"/>
                                 <color key="backgroundColor" red="0.39997668260000002" green="0.79578173559999998" blue="0.77915904469999997" alpha="0.75024245690000002" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="7oq-wa-exJ"/>
-                                    <constraint firstAttribute="height" constant="25" id="QI3-cP-MXl"/>
+                                    <constraint firstAttribute="height" constant="30" id="QI3-cP-MXl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Sync with Fitbit">
@@ -128,11 +122,10 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ODd-YH-JRj" firstAttribute="centerX" secondItem="oDb-eH-TEH" secondAttribute="centerX" id="3re-B2-lbH"/>
-                            <constraint firstItem="Pr1-VR-ckW" firstAttribute="top" secondItem="oDb-eH-TEH" secondAttribute="bottom" constant="304" id="8EA-eX-04H"/>
+                            <constraint firstItem="Pr1-VR-ckW" firstAttribute="top" secondItem="oDb-eH-TEH" secondAttribute="bottom" constant="299" id="8EA-eX-04H"/>
                             <constraint firstItem="oDb-eH-TEH" firstAttribute="top" secondItem="ODd-YH-JRj" secondAttribute="bottom" constant="8" symbolic="YES" id="9X3-7y-Luq"/>
                             <constraint firstItem="ODd-YH-JRj" firstAttribute="trailing" secondItem="cq2-nO-Q93" secondAttribute="trailingMargin" id="CFQ-s9-uVx"/>
                             <constraint firstItem="ODd-YH-JRj" firstAttribute="leading" secondItem="cq2-nO-Q93" secondAttribute="leadingMargin" id="Fe1-Ay-88H"/>
@@ -146,6 +139,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0q-xE-9BJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2161" y="-873"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="TLl-iN-faW">
+            <objects>
+                <tableViewController id="94n-Dz-d1N" customClass="SyncLogsViewController" customModule="HealthSync" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="B1E-sE-DaN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SyncLogs" textLabel="Tdn-yQ-sjt" detailTextLabel="v2o-fM-IPH" imageView="uZp-Mo-wPu" style="IBUITableViewCellStyleSubtitle" id="t6h-10-mGe">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t6h-10-mGe" id="JBg-oY-4dN">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tdn-yQ-sjt">
+                                            <rect key="frame" x="70" y="5" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="v2o-fM-IPH">
+                                            <rect key="frame" x="70" y="25" width="41" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="sync-1" id="uZp-Mo-wPu">
+                                            <rect key="frame" x="15" y="1" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="94n-Dz-d1N" id="HlX-TS-y9g"/>
+                            <outlet property="delegate" destination="94n-Dz-d1N" id="XnT-5b-EmT"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" image="logs" id="SkI-aA-P36"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wfl-J5-D4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2024" y="371"/>
         </scene>
         <!--Fitbit Login View Controller-->
         <scene sceneID="qHQ-lo-xFq">
@@ -161,11 +203,9 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fitbit_login" translatesAutoresizingMaskIntoConstraints="NO" id="00E-Da-Ojb">
                                 <rect key="frame" x="20" y="20" width="560" height="560"/>
-                                <animations/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWe-5j-obe">
                                 <rect key="frame" x="213" y="72" width="175" height="25"/>
-                                <animations/>
                                 <color key="backgroundColor" red="0.39997668260000002" green="0.79578173559999998" blue="0.77915904469999997" alpha="0.75024245689655178" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="4e3-kv-VW3"/>
@@ -180,7 +220,6 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="LWe-5j-obe" firstAttribute="top" secondItem="74e-qV-YI9" secondAttribute="bottom" constant="52" id="7Iq-tE-U7U"/>
@@ -208,13 +247,13 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="rEi-6X-EsA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="tZf-ob-BaS"/>
                         <segue destination="a31-wF-Pbt" kind="relationship" relationship="viewControllers" id="Q4d-n8-9sM"/>
                         <segue destination="Vf1-ms-vbr" kind="relationship" relationship="viewControllers" id="aIL-Ik-zav"/>
+                        <segue destination="94n-Dz-d1N" kind="relationship" relationship="viewControllers" id="vfD-3t-NdN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fTu-Yf-oiv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -235,7 +274,6 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" editable="NO" text="You can sync your steps between your Fitbit Device and Health app." translatesAutoresizingMaskIntoConstraints="NO" id="cio-5p-KQh">
                                 <rect key="frame" x="20" y="72" width="560" height="90"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="02I-HH-1bS"/>
@@ -245,7 +283,6 @@
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pw-it-o8X">
                                 <rect key="frame" x="158" y="208" width="285" height="35"/>
-                                <animations/>
                                 <color key="backgroundColor" red="0.39997668260000002" green="0.79578173559999998" blue="0.77915904469999997" alpha="0.75024245690000002" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="a1O-1U-K3d"/>
@@ -260,7 +297,6 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cio-5p-KQh" firstAttribute="top" secondItem="XiY-GS-Io3" secondAttribute="bottom" constant="8" symbolic="YES" id="Ifi-3S-MTw"/>
@@ -293,7 +329,6 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGW-6X-Qk2">
                                 <rect key="frame" x="64" y="308" width="59" height="21"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="59" id="zYH-BC-5lZ"/>
                                 </constraints>
@@ -303,7 +338,6 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ub7-B7-zEE">
                                 <rect key="frame" x="64" y="354" width="44" height="21"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="c1a-TG-XVi"/>
                                 </constraints>
@@ -313,14 +347,12 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="        --" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abg-CV-Sbf">
                                 <rect key="frame" x="138" y="354" width="442" height="21"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="il1-SH-nsM">
                                 <rect key="frame" x="64" y="400" width="71" height="21"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="71" id="ZId-BI-ieX"/>
                                 </constraints>
@@ -330,41 +362,35 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="        --" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7e-3R-C1B">
                                 <rect key="frame" x="138" y="400" width="442" height="21"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tv1-zs-Yol">
                                 <rect key="frame" x="64" y="446" width="71" height="21"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="        --" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76n-ap-beP">
                                 <rect key="frame" x="138" y="446" width="442" height="21"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="        --" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccm-lS-slL">
                                 <rect key="frame" x="138" y="308" width="442" height="21"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_profile" translatesAutoresizingMaskIntoConstraints="NO" id="tb4-pF-CzC">
                                 <rect key="frame" x="228" y="109" width="144" height="144"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="144" id="vaO-Jk-LZJ"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ub7-B7-zEE" firstAttribute="top" secondItem="rGW-6X-Qk2" secondAttribute="bottom" constant="25" id="2mT-Rh-Qyv"/>
@@ -416,7 +442,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MaP-cr-g1K">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -430,10 +455,12 @@
     </scenes>
     <resources>
         <image name="fitbit_login" width="500" height="500"/>
+        <image name="logs" width="40" height="40"/>
         <image name="no_profile" width="512" height="512"/>
         <image name="profile" width="40" height="40"/>
         <image name="run" width="483" height="600"/>
         <image name="steps" width="40" height="40"/>
         <image name="sync" width="40" height="40"/>
+        <image name="sync-1" width="40" height="40"/>
     </resources>
 </document>

@@ -44,13 +44,14 @@ class SyncViewController: UIViewController {
     
     func syncAll() {
         
-        guard Util.isConnectedToNetwork() else{
-            Util.showAlertView("No Internet Access", message: "Please connect to Internet and try again ", view: self)
+        guard isConnectedToNetwork() else{
+            showAlertView("No Internet Access", message: "Please connect to Internet and try again ", view: self)
             return
         }
         
         let fitbitManager = FitBitManager()
-        fitbitManager.syncStepsWithFitbit(totalSteps)
+        fitbitManager.syncStepsWithFitbit(totalSteps, syncSource: "HSTOF")
+        showAlertView("Sync Complete ", message: "Your data sync is complete", view: self)
     }
     
     

@@ -162,7 +162,7 @@ class FitBitManager {
         }
     }
     
-    func syncStepsWithFitbit(steps:Int){
+    func syncStepsWithFitbit(steps:Int,syncSource:String){
         
         let fitbit_activity_url =  BASE_RESOURCE_URL+"/activities.json";
         
@@ -190,6 +190,8 @@ class FitBitManager {
             }
             if let value: AnyObject = response.result.value {
                 print(value)
+                let logger = SyncLogger.sharedInstance
+                logger.storeSyncLogs(syncSource, steps: steps)
             }
         }
     }
