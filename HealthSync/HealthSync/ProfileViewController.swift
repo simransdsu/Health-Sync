@@ -32,8 +32,10 @@ class ProfileViewController: UIViewController {
         loadFitBitProfile()
     }
     
+    
+    // load user profile data if already authorized else display fitbit login page.
+    
     func loadFitBitProfile(){
-        
         let accessToken = FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken")
         if accessToken == nil || accessToken!.characters.count == 0 {
             let secondViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FitbitLoginViewController") as! FitbitLoginViewController
@@ -47,6 +49,8 @@ class ProfileViewController: UIViewController {
         
         
     }
+    
+    //Function to fetch Fitbit profile data (Name, avatar, weight, gender).
     
     func getProfileData() {
         

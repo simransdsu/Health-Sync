@@ -57,6 +57,8 @@ class SyncLogger {
         saveSyncLogs(lastSavedSyncLogs)
     }
     
+    
+    //This functions returns sync type (Source --> Destination).
     func  getSyncType(syncSource:String)-> String {
         var syncType = ""
         

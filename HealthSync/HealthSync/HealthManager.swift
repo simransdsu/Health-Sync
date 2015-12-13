@@ -1,9 +1,9 @@
 //
 //  HealthManager.swift
-//  HKTutorial
 //
-//  Created by ernesto on 18/10/14.
-//  Copyright (c) 2014 raywenderlich. All rights reserved.
+//
+//  Created by Simran Preet S Narang on 18/10/14.
+//  Copyright © 2015 SwiftStudio. All rights reserved.
 //
 
 import Foundation

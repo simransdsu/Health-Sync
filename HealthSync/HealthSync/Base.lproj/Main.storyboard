@@ -86,7 +86,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1338" y="-873"/>
+            <point key="canvasLocation" x="1290" y="-986"/>
         </scene>
         <!--Sync View Controller-->
         <scene sceneID="i23-Ds-dQs">
@@ -100,14 +100,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Currently we just support Fitbit. Other services to be added soon." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ODd-YH-JRj">
-                                <rect key="frame" x="20" y="72" width="560" height="142"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currently we just support Fitbit. Other services to be added soon." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6x-S9-Sq5">
+                                <rect key="frame" x="20" y="86" width="560" height="65"/>
+                                <color key="backgroundColor" red="0.45517294625114857" green="0.91104615867692307" blue="0.8939832607136583" alpha="0.15148168104482757" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="v3b-ry-lrf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDb-eH-TEH">
-                                <rect key="frame" x="205" y="222" width="190" height="30"/>
+                                <rect key="frame" x="205" y="285" width="190" height="30"/>
                                 <color key="backgroundColor" red="0.39997668260000002" green="0.79578173559999998" blue="0.77915904469999997" alpha="0.75024245690000002" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="7oq-wa-exJ"/>
@@ -124,21 +128,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ODd-YH-JRj" firstAttribute="centerX" secondItem="oDb-eH-TEH" secondAttribute="centerX" id="3re-B2-lbH"/>
-                            <constraint firstItem="Pr1-VR-ckW" firstAttribute="top" secondItem="oDb-eH-TEH" secondAttribute="bottom" constant="299" id="8EA-eX-04H"/>
-                            <constraint firstItem="oDb-eH-TEH" firstAttribute="top" secondItem="ODd-YH-JRj" secondAttribute="bottom" constant="8" symbolic="YES" id="9X3-7y-Luq"/>
-                            <constraint firstItem="ODd-YH-JRj" firstAttribute="trailing" secondItem="cq2-nO-Q93" secondAttribute="trailingMargin" id="CFQ-s9-uVx"/>
-                            <constraint firstItem="ODd-YH-JRj" firstAttribute="leading" secondItem="cq2-nO-Q93" secondAttribute="leadingMargin" id="Fe1-Ay-88H"/>
-                            <constraint firstItem="ODd-YH-JRj" firstAttribute="top" secondItem="RuD-GS-AEB" secondAttribute="bottom" constant="8" symbolic="YES" id="TSh-gY-vSi"/>
+                            <constraint firstItem="u6x-S9-Sq5" firstAttribute="leading" secondItem="cq2-nO-Q93" secondAttribute="leadingMargin" id="0wg-bh-b76"/>
+                            <constraint firstItem="u6x-S9-Sq5" firstAttribute="trailing" secondItem="cq2-nO-Q93" secondAttribute="trailingMargin" id="472-ln-9eg"/>
+                            <constraint firstItem="u6x-S9-Sq5" firstAttribute="centerX" secondItem="oDb-eH-TEH" secondAttribute="centerX" id="76t-bE-QsX"/>
+                            <constraint firstItem="Pr1-VR-ckW" firstAttribute="top" secondItem="oDb-eH-TEH" secondAttribute="bottom" constant="236" id="8EA-eX-04H"/>
+                            <constraint firstItem="u6x-S9-Sq5" firstAttribute="top" secondItem="RuD-GS-AEB" secondAttribute="bottom" constant="22" id="A6m-kB-pyv"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="infoLabel" destination="u6x-S9-Sq5" id="Zzj-XH-Yib"/>
                         <outlet property="syncButton" destination="oDb-eH-TEH" id="H9Y-FC-han"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0q-xE-9BJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2161" y="-873"/>
+            <point key="canvasLocation" x="1945" y="-995"/>
         </scene>
         <!--Sync logs-->
         <scene sceneID="TLl-iN-faW">
@@ -187,7 +191,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wfl-J5-D4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2024" y="371"/>
+            <point key="canvasLocation" x="1290" y="1169"/>
         </scene>
         <!--Fitbit Login-->
         <scene sceneID="qHQ-lo-xFq">
@@ -224,7 +228,6 @@
                         <constraints>
                             <constraint firstItem="LWe-5j-obe" firstAttribute="top" secondItem="74e-qV-YI9" secondAttribute="bottom" constant="52" id="7Iq-tE-U7U"/>
                             <constraint firstItem="00E-Da-Ojb" firstAttribute="leading" secondItem="My5-Dx-Qpl" secondAttribute="leadingMargin" id="8Gw-59-Krm"/>
-                            <constraint firstItem="ALP-En-xSf" firstAttribute="top" secondItem="LWe-5j-obe" secondAttribute="bottom" constant="503" id="AzU-Ra-E3m"/>
                             <constraint firstItem="LWe-5j-obe" firstAttribute="centerX" secondItem="00E-Da-Ojb" secondAttribute="centerX" id="Egd-s6-4ef"/>
                             <constraint firstItem="00E-Da-Ojb" firstAttribute="top" secondItem="74e-qV-YI9" secondAttribute="bottom" id="Her-Bg-u8Q"/>
                             <constraint firstAttribute="bottom" secondItem="00E-Da-Ojb" secondAttribute="bottom" constant="20" symbolic="YES" id="Woh-sf-Tu9"/>
@@ -272,21 +275,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" editable="NO" text="You can sync your steps between your Fitbit Device and Health app." translatesAutoresizingMaskIntoConstraints="NO" id="cio-5p-KQh">
-                                <rect key="frame" x="20" y="72" width="560" height="90"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="02I-HH-1bS"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pw-it-o8X">
-                                <rect key="frame" x="158" y="208" width="285" height="35"/>
+                                <rect key="frame" x="158" y="282" width="285" height="35"/>
                                 <color key="backgroundColor" red="0.39997668260000002" green="0.79578173559999998" blue="0.77915904469999997" alpha="0.75024245690000002" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="a1O-1U-K3d"/>
-                                    <constraint firstAttribute="width" constant="285" id="yBG-Oj-EhP"/>
+                                    <constraint firstAttribute="width" constant="285" id="nJx-Sq-6Ux"/>
+                                    <constraint firstAttribute="height" constant="35" id="tem-8M-N19"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                 <state key="normal" title="Sync Healthkit And Fitbit">
@@ -296,24 +290,35 @@
                                     <action selector="doFitbitAuth:" destination="a31-wF-Pbt" eventType="touchUpInside" id="uym-St-YOa"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can sync your steps between your Fitbit Device and Health app." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="674-3V-VN7">
+                                <rect key="frame" x="20" y="87" width="560" height="60"/>
+                                <color key="backgroundColor" red="0.39997668260000002" green="0.79578173559999998" blue="0.77915904469999997" alpha="0.2491648706931035" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="sn4-R2-hqp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cio-5p-KQh" firstAttribute="top" secondItem="XiY-GS-Io3" secondAttribute="bottom" constant="8" symbolic="YES" id="Ifi-3S-MTw"/>
-                            <constraint firstItem="cio-5p-KQh" firstAttribute="centerX" secondItem="5pw-it-o8X" secondAttribute="centerX" id="U0f-zV-3vJ"/>
-                            <constraint firstItem="5pw-it-o8X" firstAttribute="top" secondItem="cio-5p-KQh" secondAttribute="bottom" constant="46" id="dvK-LY-GCP"/>
-                            <constraint firstItem="cio-5p-KQh" firstAttribute="leading" secondItem="nRZ-Yn-m88" secondAttribute="leadingMargin" id="mq2-s4-j98"/>
-                            <constraint firstItem="cio-5p-KQh" firstAttribute="trailing" secondItem="nRZ-Yn-m88" secondAttribute="trailingMargin" id="yh6-ku-U5n"/>
+                            <constraint firstItem="674-3V-VN7" firstAttribute="leading" secondItem="nRZ-Yn-m88" secondAttribute="leadingMargin" id="FUC-rd-OOj"/>
+                            <constraint firstItem="674-3V-VN7" firstAttribute="centerX" secondItem="5pw-it-o8X" secondAttribute="centerX" id="Pap-p0-nsO"/>
+                            <constraint firstItem="IS6-do-Vs0" firstAttribute="top" secondItem="5pw-it-o8X" secondAttribute="bottom" constant="234" id="Tsn-3u-FFF"/>
+                            <constraint firstItem="674-3V-VN7" firstAttribute="trailing" secondItem="nRZ-Yn-m88" secondAttribute="trailingMargin" id="uGs-In-uFv"/>
+                            <constraint firstItem="674-3V-VN7" firstAttribute="top" secondItem="XiY-GS-Io3" secondAttribute="bottom" constant="23" id="xOi-ch-p8X"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sync-All" image="sync" id="olg-ar-72r"/>
                     <connections>
+                        <outlet property="infoLabel" destination="674-3V-VN7" id="GDF-WF-b59"/>
                         <outlet property="syncAllButton" destination="5pw-it-o8X" id="q1g-Va-xii"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZd-G7-yhq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1384" y="-34"/>
+            <point key="canvasLocation" x="1290" y="-262"/>
         </scene>
         <!--Profile-->
         <scene sceneID="2mO-zA-JHt">
@@ -431,7 +436,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uZo-Ov-upn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1307" y="892"/>
+            <point key="canvasLocation" x="1290" y="456"/>
         </scene>
         <!--Item-->
         <scene sceneID="kgH-vX-psR">

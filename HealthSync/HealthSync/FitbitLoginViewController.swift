@@ -27,6 +27,7 @@ class FitbitLoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //Fitbit one time authorization.
     @IBAction func loginWithFitbit(sender: AnyObject) {
         
         if (self.loginBackBtn.titleLabel?.text == "Login With Fitbit") {
