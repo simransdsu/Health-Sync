@@ -72,6 +72,7 @@ class FitBitManager {
                     FitBitCredentials.sharedInstance.setFitbitValue(refreshToken, withKey: "refreshToken")
                 }
             }
+            completion()
         }
         
     }

@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 
+let myNotification = "Notify"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -51,9 +53,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         
         let fitbitManager = FitBitManager()
+        let fblvc = FitbitLoginViewController();
         
         fitbitManager.getAuthInformation(url, completion: { () -> Void in
-            
+            //fblvc.backActions()
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "backActions:", name:myNotification , object: fblvc)
         })
         
         return true
