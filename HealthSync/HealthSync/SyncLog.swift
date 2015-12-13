@@ -15,6 +15,7 @@ class SyncLog:NSObject,NSCoding {
     let stepSynced:Int
     
     init(syncType:String,syncDate:String,stepSynced:Int){
+        
         self.syncType = syncType
         self.syncDate = syncDate
         self.stepSynced = stepSynced

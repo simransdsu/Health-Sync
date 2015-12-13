@@ -14,6 +14,7 @@ class SyncViewController: UIViewController {
     
     @IBOutlet weak var syncButton: UIButton!
     
+    @IBOutlet weak var infoLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +22,9 @@ class SyncViewController: UIViewController {
         syncButton.layer.borderColor = UIColor.grayColor().CGColor
         syncButton.layer.cornerRadius = 10
         
+        infoLabel.layer.borderColor = UIColor.grayColor().CGColor
+        infoLabel.layer.borderWidth = 0.5
+        infoLabel.layer.cornerRadius = 5
     }
     
     override func didReceiveMemoryWarning() {

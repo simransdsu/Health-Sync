@@ -16,15 +16,21 @@ class SyncAllViewController: UIViewController {
     let fitbitManager = FitBitManager()
     var healthManager: HealthManager? =  HealthManager()
     
+    @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var syncAllButton: UIButton!
     let activitySpinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         syncAllButton.layer.borderWidth = 0.5
         syncAllButton.layer.borderColor = UIColor.grayColor().CGColor
         syncAllButton.layer.cornerRadius = 10
+        
+        infoLabel.layer.borderColor = UIColor.grayColor().CGColor
+        infoLabel.layer.borderWidth = 0.5
+        infoLabel.layer.cornerRadius = 5
     }
     
     override func viewWillAppear(animated: Bool) {
