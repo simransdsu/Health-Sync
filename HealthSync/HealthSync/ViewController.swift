@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var numberOfStepsLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
     
     var totalSteps = 0
     
@@ -45,6 +46,12 @@ class ViewController: UIViewController {
         startButton.layer.borderColor = UIColor.blackColor().CGColor
         startButton.layer.cornerRadius = 5
         startButton.layer.borderWidth = 0.5
+        
+        resetButton.backgroundColor = themeColor
+        resetButton.layer.borderColor = UIColor.blackColor().CGColor
+        resetButton.layer.cornerRadius = 5
+        resetButton.layer.borderWidth = 0.5
+        
         let cal = NSCalendar.currentCalendar()
         let comps = cal.components(NSCalendarUnit.Year , fromDate: NSDate())
         comps.hour = 0
@@ -106,6 +113,12 @@ class ViewController: UIViewController {
                 
             }
         }
+    }
+    
+    
+    @IBAction func resetStepsAction(sender: AnyObject) {
+        self.totalSteps = 0
+        self.numberOfStepsLabel.text = "\(self.totalSteps)"
     }
     
     override func didReceiveMemoryWarning() {
