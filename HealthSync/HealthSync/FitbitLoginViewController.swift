@@ -46,11 +46,7 @@ class FitbitLoginViewController: UIViewController {
                 showAlertView("No Internet Access", message: "Please Connect to Internet and try again later.", view: self)
             }
         } else {
-            
-            if(self.delegate?.isKindOfClass(ProfileViewController) == true) {
-                let parentViewController = (self.delegate as! ProfileViewController)
-                parentViewController.getProfileData()
-            } else if((self.delegate?.isKindOfClass(SyncAllViewController) == true)) {
+            if((self.delegate?.isKindOfClass(SyncAllViewController) == true)) {
                 let parentViewController = (self.delegate as! SyncAllViewController)
                 parentViewController.syncAll()
             }

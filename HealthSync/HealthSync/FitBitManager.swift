@@ -78,7 +78,6 @@ class FitBitManager {
     }
     
     func getProfileData(completion:(result:AnyObject?)->Void) {
-        
         refereshRequest({(refreshToken, accessToken) -> Void in
             let fitbit_profile_url = self.BASE_RESOURCE_URL+"/profile.json"
             
@@ -159,57 +158,60 @@ class FitBitManager {
     
     func getFitbitSteps(completion:(result:Int?)->Void){
         
-        let fitbit_activity_steps_url = BASE_RESOURCE_URL+"/activities/steps/date/today/1d.json"
-        let header = ["Authorization":"Bearer " + (FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken")! )]
-        
-        Alamofire.request(.GET, fitbit_activity_steps_url,headers:header).responseJSON{ response in
-            guard response.result.error == nil else {
-                print(response.result.error!)
-                return
+        refereshRequest({(refreshToken, accessToken) -> Void in
+            let fitbit_activity_steps_url = self.BASE_RESOURCE_URL+"/activities/steps/date/today/1d.json"
+            let header = ["Authorization":"Bearer " + (FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken")! )]
+            
+            Alamofire.request(.GET, fitbit_activity_steps_url,headers:header).responseJSON{ response in
+                guard response.result.error == nil else {
+                    print(response.result.error!)
+                    return
+                }
+                if let result: AnyObject = response.result.value {
+                    let jsonObject  =  result as! NSDictionary
+                    let activitySteps = jsonObject["activities-steps"]!
+                    let activityArray = activitySteps as! NSArray
+                    let activity = activityArray[0] as! NSDictionary
+                    let steps = activity["value"]?.integerValue
+                    completion(result:steps)
+                }
             }
-            if let result: AnyObject = response.result.value {
-                let jsonObject  =  result as! NSDictionary
-                let activitySteps = jsonObject["activities-steps"]!
-                let activityArray = activitySteps as! NSArray
-                let activity = activityArray[0] as! NSDictionary
-                let steps = activity["value"]?.integerValue
-                completion(result:steps)
-            }
-        }
+        })
     }
     
     func syncStepsWithFitbit(steps:Int,syncSource:String){
         
-        let fitbit_activity_url =  BASE_RESOURCE_URL+"/activities.json";
-        
-        let header = ["Authorization":"Bearer " + (FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken")! )]
-        
-        var parameter = Dictionary<String, AnyObject>()
-        
-        let durationMillis = getApproximateActivityTime(steps)
-        let startTime = getStartTime()
-        let activityDate = getActivityDate()
-        let calories = getCalories(steps)
-        
-        parameter["activityId"] = walking_activity_id
-        parameter["startTime"] = startTime
-        parameter["durationMillis"] = durationMillis
-        parameter["date"] = activityDate
-        parameter["distance"] = steps
-        parameter["manualCalories"]=calories
-        parameter["distanceUnit"] = "Steps"
-        
-        Alamofire.request(.POST, fitbit_activity_url,parameters: parameter,headers:header).responseJSON{response in
-            guard response.result.error == nil else {
-                print(response.result.error!)
-                return
-            }
-            if let value: AnyObject = response.result.value {
-                print(value)
-                let logger = SyncLogger.sharedInstance
-                logger.storeSyncLogs(syncSource, steps: steps)
-            }
-        }
+        refereshRequest({(refreshToken, accessToken) -> Void in
+            let fitbit_activity_url =  self.BASE_RESOURCE_URL+"/activities.json";
+            
+            let header = ["Authorization":"Bearer " + (FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken")! )]
+            
+            var parameter = Dictionary<String, AnyObject>()
+            
+            let durationMillis = self.getApproximateActivityTime(steps)
+            let startTime = self.getStartTime()
+            let activityDate = self.getActivityDate()
+            let calories = self.getCalories(steps)
+            
+            parameter["activityId"] = self.walking_activity_id
+            parameter["startTime"] = startTime
+            parameter["durationMillis"] = durationMillis
+            parameter["date"] = activityDate
+            parameter["distance"] = steps
+            parameter["manualCalories"]=calories
+            parameter["distanceUnit"] = "Steps"
+            
+            Alamofire.request(.POST, fitbit_activity_url,parameters: parameter,headers:header).responseJSON{response in
+                guard response.result.error == nil else {
+                    print(response.result.error!)
+                    return
+                }
+                if let value: AnyObject = response.result.value {
+                    print(value)
+                    let logger = SyncLogger.sharedInstance
+                    logger.storeSyncLogs(syncSource, steps: steps)
+                }
+            }})
     }
     
     private func getCalories(steps:Int)->Int{
