@@ -25,23 +25,19 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         
-        healthManager?.authorizeHealthKit { (authorized,  error) -> Void in
-            if authorized {
-                
-            }
-            else
-            {
-                print("HealthKit authorization denied!")
-                if error != nil {
-                    print("\(error)")
-                }
-            }
-        }
         self.navigationController!.navigationBar.topItem!.title = "Step Counter"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        healthManager?.authorizeHealthKit { (authorized,  error) -> Void in
+            guard authorized  else{
+                showAlertView("Authorization Denied", message: "Healthkit authorization denied", view: self)
+            return
+            }
+        }
+    
         startButton.backgroundColor = themeColor
         startButton.layer.borderColor = UIColor.blackColor().CGColor
         startButton.layer.cornerRadius = 5

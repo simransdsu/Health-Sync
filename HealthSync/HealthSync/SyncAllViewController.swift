@@ -62,19 +62,23 @@ class SyncAllViewController: UIViewController {
         
         healthManager?.recentSteps({steps, error in
             dispatch_async(dispatch_get_main_queue()) {
-                if let totalSteps = (steps[HealthManager.TOTAL_STEPS_COUNT_AS_DOUBE] as? Int) {
-                    let healthKitSteps = Int(totalSteps)
-                    self.fitbitManager.getFitbitSteps({(result)-> Void in
-                        if let fitbitSteps = result {
-                            self.syncSteps(fitbitSteps, healthKitSteps: healthKitSteps)
-                        }
-                        stopSpinner(self.activitySpinner)
-                        showAlertView("Congrats", message: "Your data sync is complete", view: self)
-                    })
-                } else {
+                
+                guard  let totalSteps = (steps[HealthManager.TOTAL_STEPS_COUNT_AS_DOUBE] as? Int) else {
                     stopSpinner(self.activitySpinner)
-                    showAlertView("Sync Error", message: "Please try again", view: self)
+                    showAlertView("Sync Error", message: "Go to Healthkit sources and enable necessary permissions.", view: self)
+                    return
                 }
+                
+                let healthKitSteps = Int(totalSteps)
+                
+                self.fitbitManager.getFitbitSteps({(result)-> Void in
+                    guard  let fitbitSteps = result else {
+                        stopSpinner(self.activitySpinner)
+                        showAlertView("Sync Error", message: "Please try again later.", view: self)
+                        return
+                    }
+                    self.syncSteps(fitbitSteps, healthKitSteps: healthKitSteps)
+                })
             }
         })
         
@@ -83,15 +87,32 @@ class SyncAllViewController: UIViewController {
     func syncSteps(fitbitSteps:Int , healthKitSteps:Int){
         
         guard healthKitSteps != fitbitSteps else {
+            
             showAlertView("Data Synced", message: "Your data is already synced.", view: self)
+            stopSpinner(self.activitySpinner)
             return
+            
         }
         if(healthKitSteps < fitbitSteps){
+            
             let  stepsDifference = (fitbitSteps - healthKitSteps)
             self.healthManager?.saveSteps(stepsDifference)
-        }else {
+            
+        }else{
+            
             let stepsDifference = (healthKitSteps - fitbitSteps)
-            self.fitbitManager.syncStepsWithFitbit(stepsDifference,syncSource:"HTOF")
+            self.fitbitManager.syncStepsWithFitbit(stepsDifference, syncSource: "HTOF", completion:
+                { (result) -> Void in
+                    
+                    guard (result != nil) else{
+                        stopSpinner(self.activitySpinner)
+                        showAlertView("Sync Error", message: "Please try again later.", view: self)
+                        return
+                    }
+                    
+                    stopSpinner(self.activitySpinner)
+                    showAlertView("Congrats", message: "Your data sync is complete", view: self)
+            })
         }
         
     }

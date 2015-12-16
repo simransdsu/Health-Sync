@@ -159,7 +159,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0q-xE-9BJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1945" y="-995"/>
+            <point key="canvasLocation" x="1902" y="-904"/>
         </scene>
         <!--Sync logs-->
         <scene sceneID="TLl-iN-faW">
@@ -208,7 +208,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wfl-J5-D4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1290" y="1169"/>
+            <point key="canvasLocation" x="1103" y="1077"/>
         </scene>
         <!--Fitbit Login-->
         <scene sceneID="qHQ-lo-xFq">
@@ -336,7 +336,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZd-G7-yhq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1290" y="-262"/>
+            <point key="canvasLocation" x="1103" y="-234"/>
         </scene>
         <!--Profile-->
         <scene sceneID="2mO-zA-JHt">
@@ -456,7 +456,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uZo-Ov-upn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2073" y="1166"/>
+            <point key="canvasLocation" x="1773" y="422"/>
         </scene>
         <!--Item-->
         <scene sceneID="kgH-vX-psR">
@@ -512,7 +512,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v7s-pg-90x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1261" y="1166"/>
+            <point key="canvasLocation" x="1103" y="422"/>
         </scene>
     </scenes>
     <resources>

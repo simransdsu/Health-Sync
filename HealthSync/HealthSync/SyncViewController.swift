@@ -56,9 +56,19 @@ class SyncViewController: UIViewController {
         }
         
         let fitbitManager = FitBitManager()
-        fitbitManager.syncStepsWithFitbit(totalSteps, syncSource: "HSTOF")
-        showAlertView("Sync Complete ", message: "Your data sync is complete", view: self)
-        self.totalSteps = 0;
+        
+        
+        fitbitManager.syncStepsWithFitbit(totalSteps, syncSource: "HSTOF", completion:
+            { (result) -> Void in
+                
+                guard (result != nil) else{
+                    showAlertView("Sync Error", message: "Please try again later.", view: self)
+                    return
+                }
+                
+                showAlertView("Congrats", message: "Your data sync is complete", view: self)
+                self.totalSteps = 0;
+        })
     }
     
     
