@@ -72,7 +72,7 @@ class ProfileViewController: UIViewController {
             self.nameInfo.text = fitbitProfile.fullName
             self.ageInfo.text = String(fitbitProfile.age) + "  year"
             self.genderInfo.text = fitbitProfile.gender.lowercaseString
-            let weightInPounds  = fitbitProfile.weight * 2.20
+            let weightInPounds  = fitbitProfile.weight * 2.20  // kg to lbs conversion
             self.weightInfo.text = String(format:"%.2f", weightInPounds) + "  lbs"
             self.profileAvatarUrl = fitbitProfile.avatar_url
             

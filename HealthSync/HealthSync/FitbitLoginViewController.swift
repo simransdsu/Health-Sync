@@ -24,7 +24,7 @@ class FitbitLoginViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationItem.setHidesBackButton(true, animated: true)
-//        self.navigationItem.setHidesBackButton(true, animated: true)
+        //        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,6 +36,7 @@ class FitbitLoginViewController: UIViewController {
     @IBAction func loginWithFitbit(sender: AnyObject) {
         
         if (self.loginBackBtn.titleLabel?.text == "Login With Fitbit") {
+            
             self.navigationItem.setHidesBackButton(false, animated: true)
             if(isConnectedToNetwork()){
                 let fbManager = FitBitManager()
@@ -44,14 +45,15 @@ class FitbitLoginViewController: UIViewController {
                 })
             }else{
                 showAlertView("No Internet Access", message: "Please Connect to Internet and try again later.", view: self)
+            
             }
         } else {
             
-            if(self.delegate?.isKindOfClass(ProfileViewController) == true) {
-                let parentViewController = (self.delegate as! ProfileViewController)
-                parentViewController.getProfileData()
-            } else if((self.delegate?.isKindOfClass(SyncAllViewController) == true)) {
+            if((self.delegate?.isKindOfClass(SyncAllViewController) == true)) {
                 let parentViewController = (self.delegate as! SyncAllViewController)
+                parentViewController.syncAll()
+            }else if ((self.delegate?.isKindOfClass(SyncViewController) == true)) {
+                let parentViewController = (self.delegate as! SyncViewController)
                 parentViewController.syncAll()
             }
             self.navigationController?.popViewControllerAnimated(true)
