@@ -65,6 +65,7 @@ class ViewController: UIViewController {
             if(startButton.titleLabel?.text == "Start") {
                 startButton.setTitle("Stop", forState: UIControlState.Normal)
                 startButton.backgroundColor = UIColor.redColor()
+                resetButton.enabled = false
                 
                 self.pedoMeter.startPedometerUpdatesFromDate(NSDate()) {
                     (data, error) in
@@ -81,6 +82,7 @@ class ViewController: UIViewController {
             }
             else {
                 startButton.setTitle("Start", forState: UIControlState.Normal)
+                resetButton.enabled = true
                 startButton.backgroundColor = themeColor
                 self.pedoMeter.stopPedometerUpdates()
                 if(self.totalSteps != 0) {

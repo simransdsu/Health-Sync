@@ -129,6 +129,21 @@ class FitBitManager {
             
             if let value: AnyObject = response.result.value {
                 let jsonObject = value as! NSDictionary
+                
+                if let errorFound = jsonObject["errors"] {
+                    let errorType = errorFound as! NSArray
+                    let error = (errorType[0]["errorType"])
+                    if error != nil && (error! as! String) == "invalid_grant" {
+                        if(isConnectedToNetwork()){
+                            let fbManager = FitBitManager()
+                            fbManager.doFitBitOAuth({(result) -> Void in
+                                
+                            })
+                        }else{
+                            showAlertView("No Internet Access", message: "Please Connect to Internet and try again later.", view: self)
+                        }
+                    }
+                }
                 print(jsonObject)
                 if let newAccessToken = jsonObject["access_token"] {
                     let newRefreshToken = jsonObject["refresh_token"]
