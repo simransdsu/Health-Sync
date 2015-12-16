@@ -22,6 +22,11 @@ class FitbitLoginViewController: UIViewController {
         loginBackBtn.layer.cornerRadius = 10
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationItem.setHidesBackButton(true, animated: true)
+//        self.navigationItem.setHidesBackButton(true, animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -31,6 +36,7 @@ class FitbitLoginViewController: UIViewController {
     @IBAction func loginWithFitbit(sender: AnyObject) {
         
         if (self.loginBackBtn.titleLabel?.text == "Login With Fitbit") {
+            self.navigationItem.setHidesBackButton(false, animated: true)
             if(isConnectedToNetwork()){
                 let fbManager = FitBitManager()
                 fbManager.doFitBitOAuth({(result) -> Void in
@@ -48,11 +54,17 @@ class FitbitLoginViewController: UIViewController {
                 let parentViewController = (self.delegate as! SyncAllViewController)
                 parentViewController.syncAll()
             }
-            
-            
             self.navigationController?.popViewControllerAnimated(true)
+            
         }
-        
+    }
+    @objc func backActions() {
+        self.loginBackBtn.hidden = true;
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationItem.setHidesBackButton(true, animated: true)
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
     /*

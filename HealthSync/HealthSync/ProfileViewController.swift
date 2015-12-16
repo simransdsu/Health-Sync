@@ -86,4 +86,10 @@ class ProfileViewController: UIViewController {
         })
     }
     
+    
+    @IBAction func signOutActions(sender: AnyObject) {
+        FitBitCredentials.sharedInstance.setFitbitValue("", withKey: "accessToken")
+        FitBitCredentials.sharedInstance.setFitbitValue("", withKey: "refreshToken")
+    }
+    
 }

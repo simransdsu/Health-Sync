@@ -42,7 +42,9 @@ class SyncViewController: UIViewController {
             secondViewController.methodStatus = "syncAll"
             self.navigationController?.pushViewController(secondViewController, animated: true)
         } else {
-            self.syncAll()
+            if(totalSteps > 0) {
+                self.syncAll()
+            }
         }
     }
     
@@ -56,6 +58,7 @@ class SyncViewController: UIViewController {
         let fitbitManager = FitBitManager()
         fitbitManager.syncStepsWithFitbit(totalSteps, syncSource: "HSTOF")
         showAlertView("Sync Complete ", message: "Your data sync is complete", view: self)
+        self.totalSteps = 0;
     }
     
     
