@@ -204,7 +204,7 @@
                             <outlet property="delegate" destination="94n-Dz-d1N" id="XnT-5b-EmT"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" image="logs" id="SkI-aA-P36"/>
+                    <tabBarItem key="tabBarItem" title="Sync logs" image="logs" id="SkI-aA-P36"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wfl-J5-D4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
