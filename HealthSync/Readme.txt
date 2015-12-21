@@ -15,7 +15,7 @@ Future enhancement: Addition of Height and Weight as health data.
 Team members:
 
 1. Girish Chaudhari (817375231)
-2. Simranpreet singh ()
+2. Simranpreet singh (816501173)
 
 Requirements:
 
@@ -29,6 +29,11 @@ github link - > https://github.com/OAuthSwift/OAuthSwift
 2.Alamofire -> 3.0 (Fitbit restapi handling)
 github link - >https://github.com/Alamofire/Alamofire
 
+
+Note : Please test this application on actual device.
+
 Known issues:
 
 Sometime app crashes on click of Health&Fitbit sync button due to refresh token expiration scenario.We tried to handle this in best possible way. (Not always reproducible)
+
+

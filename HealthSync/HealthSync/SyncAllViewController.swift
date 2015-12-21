@@ -110,10 +110,11 @@ class SyncAllViewController: UIViewController {
                         return
                     }
                     
-                    stopSpinner(self.activitySpinner)
-                    showAlertView("Congrats", message: "Your data sync is complete", view: self)
             })
         }
+        
+        stopSpinner(self.activitySpinner)
+        showAlertView("Congrats", message: "Your data sync is complete", view: self)
         
     }
     
