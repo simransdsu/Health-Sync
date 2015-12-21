@@ -1,39 +1,43 @@
 //
 //  HealthManager.swift
-//  HKTutorial
 //
-//  Created by ernesto on 18/10/14.
-//  Copyright (c) 2014 raywenderlich. All rights reserved.
+//
+//  Created by Simran Preet S Narang on 18/10/14.
+//  Copyright © 2015 SwiftStudio. All rights reserved.
 //
 
 import Foundation
 import HealthKit
 
 class HealthManager {
+    
     let storage = HKHealthStore()
+    
     static let TOTAL_STEPS_COUNT_AS_DOUBE:String = "totalStepsCountAsDouble"
     static let STEP_RECORD_ARRAY:String = "stepRecordArray"
 
     func authorizeHealthKit(completion: ((success: Bool, error: NSError!) -> Void)!) {
 
         let healthKitTypesToRead = Set(arrayLiteral:
-            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierDateOfBirth)!,
-            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBloodType)!,
-            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBiologicalSex)!,
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!,
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!,
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!,
-            HKObjectType.workoutType()
+            
+            //Fututre enhancements
+            
+            //HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!,
+            //HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!,
+            
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
         )
-
+        
         let healthKitTypesToWrite = Set(arrayLiteral:
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex)!,
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!,
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!,
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!,
-            HKQuantityType.workoutType()
+            
+            //Fututre enhancements
+            
+            //HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!,
+            //HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!,
+            
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
+            
         )
-
         if(!HKHealthStore.isHealthDataAvailable()) {
             let error = NSError(domain: "com.CompleteStack", code: 2, userInfo: [NSLocalizedDescriptionKey:"HealthKit is not available in thie Device"])
             if(completion != nil) {
@@ -102,9 +106,12 @@ class HealthManager {
             if(error != nil) {
                 print("Error Saving Data \(error)")
             } else {
+                let logger = SyncLogger.sharedInstance
+                logger.storeSyncLogs("FTOH", steps: numberOfStepsToSave)
                 print("Data Saved")
             }
 
         })
     }
+
 }

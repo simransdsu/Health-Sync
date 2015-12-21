@@ -10,7 +10,7 @@ import Foundation
 
 class FitBitUserProfile {
     
-    var age:Int
+    let age:Int
     let avatar_url:String
     let fullName:String
     let gender:String

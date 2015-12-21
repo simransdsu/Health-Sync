@@ -17,8 +17,9 @@ class FitBitManager {
     let scopes  = "activity profile weight"
     let walking_activity_id = "90013" // FitBit walking activity id
     let running_activity_id = "90009" // FitBit running activity id
-    
-    func doFitBitOAuth(){
+    var fitbitProfile: FitBitUserProfile?
+    let  OK = 200
+    func doFitBitOAuth(completion: (result: AnyObject) -> Void){
         
         let authorizeURL = BASE_AUTH_URL+"client_id=" + (FitBitCredentials.sharedInstance.fitBitValueForKey("clientID")!)
         let scope = scopes.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())
@@ -35,18 +36,59 @@ class FitBitManager {
             }, failure: {(error:NSError!) -> Void in
                 print(error.localizedDescription)
         })
+        completion(result: "doFitBitOAuth")
+        
     }
     
-    func getProfileData(completion:(result:AnyObject)->Void) {
+    func getAuthInformation(url: NSURL, completion:() -> Void) {
         
+        let clientID = FitBitCredentials.sharedInstance.fitBitValueForKey("clientID")
+        let code = (url.query!).characters.split{$0 == "="}.map(String.init)
+        
+        var parameter = Dictionary<String, AnyObject>()
+        var headers = Dictionary<String, String>()
+        
+        headers["Authorization"] = "Basic MjI5UjZWOjFlNDkzOGVlMzA3ZDk4MmI2NWFmYmQyZGYwYTU1ZDBi"
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+        
+        parameter["grant_type"] = "authorization_code"
+        parameter["client_id"] = clientID
+        parameter["redirect_uri"] = "healthsync://oauth"
+        parameter["code"] = code[1]
+        
+        let fitbit_token_url =  "https://api.fitbit.com/oauth2/token?";
+        
+        Alamofire.request(.POST, fitbit_token_url,parameters: parameter, headers:headers).responseJSON{ response in
+            guard response.result.error == nil else {
+                return
+            }
+            
+            if let value: AnyObject = response.result.value {
+                let jsonObject = value as! NSDictionary
+                if let accessToken = jsonObject["access_token"] {
+                    FitBitCredentials.sharedInstance.setFitbitValue((accessToken as? String)!, withKey: "accessToken")
+                    FitBitCredentials.sharedInstance.setFitbitValue(String(jsonObject["expires_in"]!), withKey: "expiresIn")
+                    let refreshToken = String(jsonObject["refresh_token"]!)
+                    FitBitCredentials.sharedInstance.setFitbitValue(refreshToken, withKey: "refreshToken")
+                }
+            }
+            completion()
+        }
+        
+    }
+    
+    func getProfileData(completion:(result:AnyObject?)->Void) {
         refereshRequest({(refreshToken, accessToken) -> Void in
             let fitbit_profile_url = self.BASE_RESOURCE_URL+"/profile.json"
             
             let header = ["Authorization":"Bearer " + accessToken]
             
             Alamofire.request(.GET, fitbit_profile_url,headers:header).responseJSON{ response in
-                guard response.result.error == nil else {
-                    print(response.result.error!)
+                
+                let statusCode = response.response?.statusCode
+                
+                guard statusCode == self.OK else{
+                    completion(result:nil)
                     return
                 }
                 
@@ -55,13 +97,13 @@ class FitBitManager {
                     let user = jsonObject["user"]!
                     
                     let age  = user["age"]!?.integerValue
-                    let avatar_url = (user["avatar"]! as! String)
+                    let avatar_url = (user["avatar150"]! as! String)
                     let fullName = (user["fullName"]! as! String)
                     let gender = (user["gender"]! as! String)
                     let height = user["height"]!?.doubleValue
                     let weight = user["weight"]!?.doubleValue
-                    let fitbitProfile = FitBitUserProfile(age: age!, avatar_url: avatar_url, fullName: fullName, gender: gender, height: height!, weight: weight!)
-                    completion(result:fitbitProfile)
+                    self.fitbitProfile = FitBitUserProfile(age: age!, avatar_url: avatar_url, fullName: fullName, gender: gender, height: height!, weight: weight!)
+                    completion(result:self.fitbitProfile!)
                 }
             }
         })
@@ -81,19 +123,31 @@ class FitBitManager {
         Alamofire.request(.POST, refreshTokenURL, parameters: parameters, headers:headers).responseJSON{ response in
             
             guard response.result.error == nil else {
-                // got an error in getting the data, need to handle it
-                print("error calling GET on /posts/1")
                 print(response.result.error!)
                 return
             }
             
             if let value: AnyObject = response.result.value {
                 let jsonObject = value as! NSDictionary
-                print(jsonObject)
+                
+                if let errorFound = jsonObject["errors"] {
+                    let errorType = errorFound as! NSArray
+                    let error = (errorType[0]["errorType"])
+                    if error != nil && (error! as! String) == "invalid_grant" {
+                        if(isConnectedToNetwork()){
+                            let fbManager = FitBitManager()
+                            fbManager.doFitBitOAuth({(result) -> Void in
+                                
+                            })
+                        }else{
+                            showAlertView("No Internet Access", message: "Please Connect to Internet and try again later.", view: self)
+                        }
+                    }
+                }
+                
                 if let newAccessToken = jsonObject["access_token"] {
                     let newRefreshToken = jsonObject["refresh_token"]
-                    print(newAccessToken)
-                    print(newRefreshToken)
+                    
                     FitBitCredentials.sharedInstance.setFitbitValue((newAccessToken as! String), withKey: "accessToken")
                     FitBitCredentials.sharedInstance.setFitbitValue((newRefreshToken as! String), withKey: "refreshToken")
                     completion(refreshToken: (newRefreshToken as! String), accessToken: (newAccessToken as! String))
@@ -102,66 +156,78 @@ class FitBitManager {
         }
     }
     
-    func getFitbitSteps(){
+    func getFitbitSteps(completion:(result:Int?)->Void){
         
-        let fitbit_activity_steps_url = BASE_RESOURCE_URL+"/activities/steps/date/today/1d.json"
-        
-        let header = ["Authorization":"Bearer " + (FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken")! )]
-        
-        Alamofire.request(.GET, fitbit_activity_steps_url,headers:header).responseJSON{ response in
-            guard response.result.error == nil else {
-                print(response.result.error!)
-                return
+        refereshRequest({(refreshToken, accessToken) -> Void in
+            let fitbit_activity_steps_url = self.BASE_RESOURCE_URL+"/activities/steps/date/today/1d.json"
+            let header = ["Authorization":"Bearer " + accessToken]
+            
+            Alamofire.request(.GET, fitbit_activity_steps_url,headers:header).responseJSON{ response in
+                
+                let statusCode = response.response?.statusCode
+                
+                guard statusCode == self.OK else{
+                    completion(result:nil)
+                    return
+                }
+                
+                if let result: AnyObject = response.result.value {
+                    let jsonObject  =  result as! NSDictionary
+                    let activitySteps = jsonObject["activities-steps"]!
+                    let activityArray = activitySteps as! NSArray
+                    let activity = activityArray[0] as! NSDictionary
+                    let steps = activity["value"]?.integerValue
+                    completion(result:steps)
+                }
+                
             }
-            if let result: AnyObject = response.result.value {
-                let jsonObject  =  result as! NSDictionary
-                let activitySteps = jsonObject["activities-steps"]!
-                let activityArray = activitySteps as! NSArray
-                let activity = activityArray[0] as! NSDictionary
-                let steps = (activity["value"]! as! String)
-                FitBitCredentials.sharedInstance.setFitbitValue(steps, withKey: "fitbit_steps")
-            }
-        }
+        })
     }
     
-    func syncStepsWithFitbit(steps:Int){
+    func syncStepsWithFitbit(steps:Int,syncSource:String, completion:(result:AnyObject?)->Void){
         
-        let fitbit_activity_url =  BASE_RESOURCE_URL+"/activities.json";
-        
-        let header = ["Authorization":"Bearer " + (FitBitCredentials.sharedInstance.fitBitValueForKey("accessToken")! )]
-        
-        var parameter = Dictionary<String, AnyObject>()
-        
-        let durationMillis = getApproximateActivityTime(steps)
-        let startTime = getStartTime()
-        let activityDate = getActivityDate()
-        let calories = getCalories(steps)
-        
-        parameter["activityId"] = walking_activity_id
-        parameter["startTime"] = startTime
-        parameter["durationMillis"] = durationMillis
-        parameter["date"] = activityDate
-        parameter["distance"] = steps
-        parameter["manualCalories"]=calories
-        parameter["distanceUnit"] = "Steps"
-        
-        Alamofire.request(.POST, fitbit_activity_url,parameters: parameter,headers:header).responseJSON{response in
-            guard response.result.error == nil else {
-                print(response.result.error!)
-                return
-            }
-            if let value: AnyObject = response.result.value {
-                print(value)
-            }
-        }
+        refereshRequest({(refreshToken, accessToken) -> Void in
+            let fitbit_activity_url =  self.BASE_RESOURCE_URL+"/activities.json";
+            
+            let header = ["Authorization":"Bearer " + accessToken]
+            
+            var parameter = Dictionary<String, AnyObject>()
+            
+            let durationMillis = self.getApproximateActivityTime(steps)
+            let startTime = self.getStartTime()
+            let activityDate = self.getActivityDate()
+            let calories = self.getCalories(steps)
+            
+            parameter["activityId"] = self.walking_activity_id
+            parameter["startTime"] = startTime
+            parameter["durationMillis"] = durationMillis
+            parameter["date"] = activityDate
+            parameter["distance"] = steps
+            parameter["manualCalories"]=calories
+            parameter["distanceUnit"] = "Steps"
+            
+            Alamofire.request(.POST, fitbit_activity_url,parameters: parameter,headers:header).responseJSON{response in
+                
+                let statusCode = response.response?.statusCode
+                guard statusCode == 201 else{
+                    completion(result:nil)
+                    return
+                }
+                
+                if let _ = response.result.value {
+                    completion(result: "success")
+                    let logger = SyncLogger.sharedInstance
+                    logger.storeSyncLogs(syncSource, steps: steps)
+                }
+            }})
     }
     
-    private func getCalories(steps:Int)->Double{
-        return Double(steps) * 0.05
+    private func getCalories(steps:Int)->Int{
+        return Int(Double(steps) * 0.05) // steps to calories conversion 1 Cal/ 20 steps
     }
     
     private func getApproximateActivityTime(steps:Int)-> Int {
-        return steps*500; //  approx 2 steps per sec
+        return Int(steps*500); //  approx 2 steps per sec
     }
     
     private func getStartTime()->String{
@@ -175,6 +241,4 @@ class FitBitManager {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.stringFromDate(NSDate())
     }
-    
-    
 }

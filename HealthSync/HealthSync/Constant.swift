@@ -35,7 +35,6 @@ class FitBitCredentials {
     
     func synchronize() {
         NSUserDefaults().setObject(fitbit, forKey: "Fitbit")
-        print("\n\n \(fitbit)")
     }
     
     func desynchronize() {
